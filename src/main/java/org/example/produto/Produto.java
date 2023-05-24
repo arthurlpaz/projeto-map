@@ -8,8 +8,6 @@ public class Produto {
     private String descricao;
     private int ID;
 
-
-
     public Produto(String nome, double valor, String tipo, String marca, String descricao, int ID) {
         this.nome = nome;
         this.valor = valor;
@@ -72,5 +70,10 @@ public class Produto {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    @Override
+    public String toString()  {
+        return "nome do produto -> " +this.nome + " ID -> " + this.ID + " valor -> " + this.valor;
     }
 }

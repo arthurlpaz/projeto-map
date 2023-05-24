@@ -3,8 +3,6 @@ package org.example.repositorio;
 
 import java.util.ArrayList;
 import org.example.entidades.Comprador;
-import org.example.produto.Carrinho;
-import org.example.produto.Pedido;
 
 public class RepositorioComprador implements Repositorio{
 
@@ -19,13 +17,11 @@ public class RepositorioComprador implements Repositorio{
 
     public static RepositorioComprador getInstancia(){
         if(instanciaUnicaRepositorio == null){
-            System.out.println("criou");
             return instanciaUnicaRepositorio = new RepositorioComprador();
         }
-        System.out.println("pegou");
         return instanciaUnicaRepositorio;
     }
-    public static Comprador GetCompradorPorID(int ID){
+    public static Comprador getCompradorPorID(int ID){
         Comprador compradorAuxiliar = null;
         for (Comprador listaCompradore : listaCompradores) {
             if (listaCompradore.getID() == ID) {
@@ -45,8 +41,12 @@ public class RepositorioComprador implements Repositorio{
         }
         return compradorAuxiliar;
     }
-    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Carrinho carrinhoDeCompras, ArrayList<Pedido> historicoPedidos) {
-        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID, carrinhoDeCompras, historicoPedidos));
+//    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Carrinho carrinhoDeCompras, ArrayList<Pedido> historicoPedidos) {
+//        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID, carrinhoDeCompras, historicoPedidos));
+//        ID++;
+//    }
+    public static void inserir(String nome, String email, String senha, String cpf, String endereco) {
+        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID));
         ID++;
     }
     public static void removerPorCpf(String Cpf) {

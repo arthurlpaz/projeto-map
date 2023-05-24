@@ -14,7 +14,6 @@ public class Estoque {
     public void inserir(String nome, double valor, String tipo, String marca, String descricao, int quantidade){
         estoque.add(new MapProduto(new Produto(nome, valor, tipo, marca, descricao, ID), quantidade));
     }
-
     public void remover(int ID_produto_a_remover){
         for (int i = 0; i < estoque.size(); i++) {
             if(estoque.get(i).getProduto().getID() == ID_produto_a_remover){
@@ -22,5 +21,12 @@ public class Estoque {
                 break;
             };
         }
+    }
+    public ArrayList<MapProduto> getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(ArrayList<MapProduto> estoque) {
+        this.estoque = estoque;
     }
 }

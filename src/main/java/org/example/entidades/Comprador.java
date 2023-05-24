@@ -1,8 +1,5 @@
 package org.example.entidades;
 
-import org.example.produto.Carrinho;
-import org.example.produto.Pedido;
-
 import java.util.ArrayList;
 
 public class Comprador implements Entidades{
@@ -12,8 +9,7 @@ public class Comprador implements Entidades{
     private String cpf;
     private String endereco;
     private int ID;
-    private ArrayList<Pedido> historicoDePedidos;
-    private Carrinho carrinhoDeCompras;
+
 
     public Comprador(String nome, String email, String senha, String cpf, String endereco, int ID) {
         this.nome = nome;
@@ -22,27 +18,9 @@ public class Comprador implements Entidades{
         this.cpf = cpf;
         this.endereco = endereco;
         this.ID = ID;
-        this.carrinhoDeCompras = new Carrinho();
-        this.historicoDePedidos = new ArrayList<>();
-    }
-    public Comprador(String nome, String email, String senha, String cpf, String endereco, int ID, Carrinho carrinhoDeCompras, ArrayList<Pedido> historicoDePedidos) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.ID = ID;
-        this.carrinhoDeCompras = carrinhoDeCompras;
-        this.historicoDePedidos = historicoDePedidos;
-    }
-    public void completarCompra(){
-        historicoDePedidos.add(new Pedido(carrinhoDeCompras.getProdutos(), "succesfull"));
-        carrinhoDeCompras.clear();
+
     }
 
-    public void cancelarCompra(){
-        carrinhoDeCompras.clear();
-    }
     @Override
     public String toString(){
         return "nome do comprador -> " + this.nome + " email -> " + this.email + " endereco -> " + this.endereco + " ID -> " + this.ID;
@@ -83,18 +61,7 @@ public class Comprador implements Entidades{
     public void setID(int ID) {
         this.ID = ID;
     }
-    public ArrayList<Pedido> getHistoricoDePedidos() {
-        return historicoDePedidos;
-    }
-    public void setHistoricoDePedidos(ArrayList<Pedido> historicoDePedidos) {
-        this.historicoDePedidos = historicoDePedidos;
-    }
-    public Carrinho getCarrinhoDeCompras() {
-        return carrinhoDeCompras;
-    }
-    public void setCarrinhoDeCompras(Carrinho carrinhoDeCompras) {
-        this.carrinhoDeCompras = carrinhoDeCompras;
-    }
+
 
     // TODO
     @Override
