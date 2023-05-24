@@ -1,0 +1,20 @@
+package org.example;
+
+import org.example.entidades.Comprador;
+import org.example.repositorio.RepositorioComprador;
+
+import java.util.ArrayList;
+
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
+    public static void main(String[] args) {
+        RepositorioComprador.getInstancia();
+        RepositorioComprador.inserir("a","a","a","a","a");
+        RepositorioComprador.inserir("a","a","a","a","a");
+        RepositorioComprador.inserir("a","a","a","a","a");
+        RepositorioComprador.inserir("a","a","a","a","a");
+        RepositorioComprador.getInstancia();
+        RepositorioComprador.listar();
+    }
+}
