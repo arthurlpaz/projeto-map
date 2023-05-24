@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Estoque {
     ArrayList<MapProduto> estoque;
-
     int ID;
 
     public Estoque(){
@@ -14,9 +13,6 @@ public class Estoque {
 
     public void inserir(String nome, double valor, String tipo, String marca, String descricao, int quantidade){
         estoque.add(new MapProduto(new Produto(nome, valor, tipo, marca, descricao, ID), quantidade));
-    }
-    public void inserir(Produto produto){
-        estoque.add(new MapProduto(produto));
     }
 
     public void remover(int ID_produto_a_remover){

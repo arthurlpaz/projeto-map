@@ -3,6 +3,8 @@ package org.example.repositorio;
 
 import java.util.ArrayList;
 import org.example.entidades.Comprador;
+import org.example.produto.Carrinho;
+import org.example.produto.Pedido;
 
 public class RepositorioComprador implements Repositorio{
 
@@ -43,8 +45,8 @@ public class RepositorioComprador implements Repositorio{
         }
         return compradorAuxiliar;
     }
-    public static void inserir(String nome, String email, String senha, String cpf, String endereco) {
-        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID));
+    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Carrinho carrinhoDeCompras, ArrayList<Pedido> historicoPedidos) {
+        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID, carrinhoDeCompras, historicoPedidos));
         ID++;
     }
     public static void removerPorCpf(String Cpf) {
