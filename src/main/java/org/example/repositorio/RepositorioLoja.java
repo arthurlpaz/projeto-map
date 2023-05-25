@@ -1,5 +1,6 @@
 package org.example.repositorio;
 
+import org.example.entidades.Comprador;
 import org.example.entidades.Loja;
 import org.example.produto.Estoque;
 
@@ -46,7 +47,18 @@ public class RepositorioLoja {
 //        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque, historicoPedidos));
 //        ID++;
 //    }
-    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque) {
+    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque) throws Exception {
+        for (Loja loja : listaLojas) {
+            if(loja.getNome().equals(nome)){
+                throw new Exception("já existe um usuario com esse nome no sistema");
+            }
+            if(loja.getEmail().equals(email)){
+                throw new Exception("Email ja cadastrado no sistema");
+            }
+            if(loja.getCpf().equals(cpf)){
+                throw new Exception("CPF ja cadastrado no sistema");
+            }
+        }
         listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque));
         ID++;
     }

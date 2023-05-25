@@ -4,7 +4,7 @@ import org.example.produto.Estoque;
 
 import java.util.ArrayList;
 
-public class Loja implements Entidades{
+public class Loja  extends  Entidades{
     private String nome;
     private String email;
     private String senha;
@@ -96,15 +96,4 @@ public class Loja implements Entidades{
         this.estoque = estoque;
     }
 
-    // TODO
-    @Override
-    public void login() {
-
-    }
-
-    //TODO
-    @Override
-    public void logout() {
-
-    }
 }

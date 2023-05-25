@@ -2,7 +2,7 @@ package org.example.entidades;
 
 import java.util.ArrayList;
 
-public class Comprador implements Entidades{
+public class Comprador  extends  Entidades{
     private String nome;
     private String email;
     private String senha;
@@ -60,17 +60,5 @@ public class Comprador implements Entidades{
     }
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-
-    // TODO
-    @Override
-    public void login() {
-
-    }
-    //TODO
-    @Override
-    public void logout() {
-
     }
 }

@@ -23,9 +23,19 @@ public class RepositorioComprador implements Repositorio{
     }
     public static Comprador getCompradorPorID(int ID){
         Comprador compradorAuxiliar = null;
-        for (Comprador listaCompradore : listaCompradores) {
-            if (listaCompradore.getID() == ID) {
-                compradorAuxiliar = listaCompradore;
+        for (Comprador listaComprador : listaCompradores) {
+            if (listaComprador.getID() == ID) {
+                compradorAuxiliar = listaComprador;
+                break;
+            }
+        }
+        return compradorAuxiliar;
+    }
+    public static Comprador getCompradorPorNome(String nome){
+        Comprador compradorAuxiliar = null;
+        for (Comprador listaComprador : listaCompradores) {
+            if (listaComprador.getNome().equals(nome)) {
+                compradorAuxiliar = listaComprador;
                 break;
             }
         }
@@ -33,9 +43,9 @@ public class RepositorioComprador implements Repositorio{
     }
     public static Comprador GetCompradoresPorCPF(String Cpf){
         Comprador compradorAuxiliar = null;
-        for (Comprador listaCompradore : listaCompradores) {
-            if (listaCompradore.getCpf().equals(Cpf)) {
-                compradorAuxiliar = listaCompradore;
+        for (Comprador listaComprador : listaCompradores) {
+            if (listaComprador.getCpf().equals(Cpf)) {
+                compradorAuxiliar = listaComprador;
                 break;
             }
         }
@@ -45,7 +55,18 @@ public class RepositorioComprador implements Repositorio{
 //        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID, carrinhoDeCompras, historicoPedidos));
 //        ID++;
 //    }
-    public static void inserir(String nome, String email, String senha, String cpf, String endereco) {
+    public static void inserir(String nome, String email, String senha, String cpf, String endereco) throws Exception {
+        for (Comprador listaComprador : listaCompradores) {
+            if(listaComprador.getNome().equals(nome)){
+                throw new Exception("já existe um usuario com esse nome no sistema");
+            }
+            if(listaComprador.getEmail().equals(email)){
+                throw new Exception("Email ja cadastrado no sistema");
+            }
+            if(listaComprador.getCpf().equals(cpf)){
+                throw new Exception("CPF ja cadastrado no sistema");
+            }
+        }
         listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID));
         ID++;
     }
@@ -66,8 +87,8 @@ public class RepositorioComprador implements Repositorio{
         }
     }
     public static void listar(){
-        for (Comprador listaCompradore : listaCompradores) {
-            System.out.println(listaCompradore);
+        for (Comprador listaComprador : listaCompradores) {
+            System.out.println(listaComprador);
         }
     }
 }
