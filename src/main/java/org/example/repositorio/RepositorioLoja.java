@@ -97,7 +97,7 @@ public class RepositorioLoja {
     public static void listarTodosOsProdutos(){
         for (Loja loja : listaLojas) {
             System.out.println("Loja: " + loja.getNome());
-            loja.listaProdutos();
+            loja.getEstoque().listarProdutos();
         }
     }
 }

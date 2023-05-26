@@ -17,11 +17,15 @@ public class MenuDeslogado {
         if(tipoUsuario.equals("comprador")){
             registerPageComprador();
         } else if (tipoUsuario.equals("loja")) {
-            System.out.println("entrou aq");
             registerPageLoja();
         }else{
             throw new Exception("Tipo de usuario nao identificado");
         }
+    }
+
+    //TODO
+    public static void deletePage(){
+
     }
 
     public static void registerPageComprador() throws Exception {
@@ -83,10 +87,10 @@ public class MenuDeslogado {
         endereco = sc.nextLine();
 
         if(nome.equals("") || senha.equals("") || cpf.equals("") || email.equals("") || endereco.equals("")){
-            throw new Exception();
+            throw new Exception("Algum dado nao foi fornecido corretamente");
         }
         if(nome.equals(" ") || senha.equals(" ") || cpf.equals(" ") || email.equals(" ") || endereco.equals(" ")){
-            throw new Exception();
+            throw new Exception("Algum dado nao foi fornecido corretamente");
         }
 
         RepositorioLoja.inserir(nome,email,senha,cpf,endereco,null);
@@ -95,14 +99,14 @@ public class MenuDeslogado {
     public static void loginPage() throws Exception {
         Scanner sc = new Scanner(System.in);
 
-        int ID;
+        String nome;
         String tipoUsuario;
 
         System.out.println("insira os dados: Tipo de usuario que vai logar ");
         tipoUsuario = sc.nextLine();
-        System.out.println("insira os dados: ID" );
-        ID = sc.nextInt();
+        System.out.println("insira os dados: nome" );
+        nome = sc.nextLine();
 
-        AuthService.login(ID, tipoUsuario);
+        AuthService.login(nome, tipoUsuario);
     }
 }
