@@ -17,6 +17,7 @@ public class MenuDeslogado {
         if(tipoUsuario.equals("comprador")){
             registerPageComprador();
         } else if (tipoUsuario.equals("loja")) {
+            System.out.println("entrou aq");
             registerPageLoja();
         }else{
             throw new Exception("Tipo de usuario nao identificado");

@@ -10,4 +10,5 @@ public class MenuLoja {
         System.out.println("8 - Fazer logout");
         System.out.println("9 - Fechar sistema");
     }
+
 }

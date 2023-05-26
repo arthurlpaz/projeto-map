@@ -43,7 +43,7 @@ public class RepositorioCompradorTests extends TestCase {
         repositorio.removerPorCpf(cpfPraRemocao);
 
         assertEquals(quantidadeInicial - 1, repositorio.getListaCompradores().size());
-        assertEquals(null, repositorio.GetCompradoresPorCPF(cpfPraRemocao));
+        assertEquals(null, repositorio.getCompradoresPorCPF(cpfPraRemocao));
 
         repositorio.removerPorID(0);
         repositorio.removerPorID(1);

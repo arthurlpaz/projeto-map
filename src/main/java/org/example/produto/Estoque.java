@@ -14,11 +14,25 @@ public class Estoque {
     public void inserir(String nome, double valor, String tipo, String marca, String descricao, int quantidade){
         estoque.add(new MapProduto(new Produto(nome, valor, tipo, marca, descricao, ID), quantidade));
     }
-    public void remover(int ID_produto_a_remover){
+    public void removerPorID(int ID_produto_a_remover, int quantidade){
         for (int i = 0; i < estoque.size(); i++) {
-            if(estoque.get(i).getProduto().getID() == ID_produto_a_remover){
+            if(estoque.get(i).getQuantidade() < quantidade){
                 estoque.remove(i);
                 break;
+            }else{
+                estoque.get(i).setQuantidade(estoque.get(i).getQuantidade()-quantidade);
+            }
+        }
+    }
+    public void removerPorNome(String nome, int quantidade){
+        for (int i = 0; i < estoque.size(); i++) {
+            if(estoque.get(i).getProduto().getNome().equals(nome)){
+                if(estoque.get(i).getQuantidade() < quantidade){
+                    estoque.remove(i);
+                    break;
+                }else{
+                    estoque.get(i).setQuantidade(estoque.get(i).getQuantidade()-quantidade);
+                }
             };
         }
     }
