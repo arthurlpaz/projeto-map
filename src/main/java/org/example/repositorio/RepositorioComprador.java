@@ -41,7 +41,7 @@ public class RepositorioComprador implements Repositorio{
         }
         return compradorAuxiliar;
     }
-    public static Comprador GetCompradoresPorCPF(String Cpf){
+    public static Comprador getCompradoresPorCPF(String Cpf){
         Comprador compradorAuxiliar = null;
         for (Comprador listaComprador : listaCompradores) {
             if (listaComprador.getCpf().equals(Cpf)) {
