@@ -36,6 +36,13 @@ public class CompradorTest extends TestCase {
     }
 
     @Test
+    public void testGetSenha(){
+        Comprador comprador = new Comprador("Pedro", "pedro@example.com", "senha789", "555555555", "Rua C", 3);
+        String senha = comprador.getSenha();
+        assertEquals("senha789", senha);
+    }
+
+    @Test
     public void testSetSenha() {
         Comprador comprador = new Comprador("Pedro", "pedro@example.com", "senha789", "555555555", "Rua C", 3);
         comprador.setSenha("novasenha");
@@ -56,6 +63,13 @@ public class CompradorTest extends TestCase {
         comprador.setCpf("987654321");
         String novoCpf = comprador.getCpf();
         Assert.assertEquals("987654321", novoCpf);
+    }
+
+    @Test
+    public void testGetEndereco() {
+        Comprador comprador = new Comprador("Maria", "maria@example.com", "senha456", "987654321", "Rua B", 2);
+        String endereco = comprador.getEndereco();
+        assertEquals("Rua B", endereco);
     }
 
     @Test
