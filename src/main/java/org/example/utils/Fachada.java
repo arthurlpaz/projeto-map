@@ -17,6 +17,12 @@ public class Fachada {
         RepositorioComprador.getInstancia();
         RepositorioLoja.getInstancia();
 
+        try{
+            RepositorioLoja.inserir("a","a","a","a","a",null);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
         int escolha = 0;
         while(escolha != 9){
             if(AuthService.isLogged()){
@@ -70,6 +76,15 @@ public class Fachada {
                 }
             }
 
+            //excluir usuario
+            case 3 -> {
+                try{
+                    MenuDeslogado.deletePage();
+                }catch (Exception exception){
+                    System.out.println("Algum dos dados fornecidos não é válido");
+                }
+            }
+
             //fecha a aplicação
             case 9 -> {
                 System.out.println("fechando sistema!");
@@ -102,7 +117,7 @@ public class Fachada {
                 nomeLoja = sc.nextLine();
 
                 Loja auxLoja = RepositorioLoja.getLojaPorNome(nomeLoja);
-                auxLoja.listaProdutos();
+                auxLoja.getEstoque().listarProdutos();
             }
 
             //mostra todos os produtos de todas as lojas cadastradas
@@ -136,7 +151,7 @@ public class Fachada {
 
         Scanner sc = new Scanner(System.in);
 
-        MenuComprador.initialPage();
+        MenuLoja.initialPage();
 
         escolha = sc.nextInt();
         sc.nextLine();
@@ -144,59 +159,21 @@ public class Fachada {
         switch (escolha) {
             //visualiza os produtos do estoque
             case 1 -> {
-                lojaLogada.listaProdutos();
+                lojaLogada.getEstoque().listarProdutos();
             }
 
             //adiciona produtos no estoque
             case 2 -> {
-                String nome;
-                double valor;
-                String tipo;
-                String marca;
-                String descricao;
-                int quantidade;
-
-                System.out.println("insira os dados: nome");
-                nome = sc.nextLine();
-
-                System.out.println("insira os dados: valor");
-                valor = sc.nextDouble();
-
-                System.out.println("insira os dados: tipo");
-                tipo = sc.nextLine();
-
-                System.out.println("insira os dados: marca");
-                marca = sc.nextLine();
-
-                System.out.println("insira os dados: descricao");
-                descricao = sc.nextLine();
-
-                System.out.println("insira os dados: quantidade");
-                quantidade = sc.nextInt();
-
-                if(nome.equals("") || tipo.equals("") || marca.equals("")){
-                    throw new Exception("algum dado foi preenchido incorretamente");
-                }
-                if(nome.equals(" ") || tipo.equals(" ") || marca.equals(" ")){
-                    throw new Exception("algum dado foi preenchido incorretamente");
-                }
-                lojaLogada.getEstoque().inserir(nome, valor, tipo, marca, descricao, quantidade);
+                MenuLoja.inserirProdutoNoEstoque(lojaLogada);
             }
 
             //remove produtos do estoque
             case 3 -> {
-                String nome;
-                int quantidade;
-                System.out.println("digite o nome do produto de que deseja remover");
-                nome = sc.nextLine();
-                System.out.println("digite a quantidade do produto de que deseja remover");
-                quantidade = sc.nextInt();
-
-                lojaLogada.getEstoque().removerPorNome(nome, quantidade);
+                MenuLoja.removerProdutoDoEstoque(lojaLogada);
             }
             //atualizar dados de produtos do estoque
             case 4 -> {
-//                lojaLogada.
+                MenuLoja.atualizarDadosDoProduto(lojaLogada);
             }
 
             //desloga do aplicativo
@@ -212,19 +189,5 @@ public class Fachada {
         }
 
         return escolha;
-    }
-    public static void criarComprador(String nome, String email, String senha, String cpf, String endereco){
-        try {
-            RepositorioComprador.inserir(nome, email, senha, cpf, endereco);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    public static void criarLoja(String nome, String email, String senha, String cpf, String endereco){
-        try {
-            RepositorioLoja.inserir(nome, email, senha, cpf, endereco, null);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 }

@@ -30,12 +30,9 @@ public class Loja  extends  Entidades{
         this.ID = ID;
         this.estoque = estoque;
     }
-    public void listaProdutos(){
-
-    }
     @Override
     public String toString(){
-        return "nome da loja-> " + this.nome + "email -> " + this.email + "endereco -> " + this.endereco + "ID -> " + this.ID;
+        return "nome da loja-> " + this.nome + " email -> " + this.email + " endereco -> " + this.endereco + " ID -> " + this.ID;
     }
     public String getNome() {
         return nome;
@@ -95,5 +92,4 @@ public class Loja  extends  Entidades{
     public void setEstoque(Estoque estoque) {
         this.estoque = estoque;
     }
-
 }

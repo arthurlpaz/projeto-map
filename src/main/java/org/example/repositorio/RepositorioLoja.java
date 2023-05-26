@@ -43,6 +43,16 @@ public class RepositorioLoja {
         }
         return lojaAuxiliar;
     }
+    public static Loja getLojaPorNome(String nome){
+        Loja lojaAuxiliar = null;
+        for (Loja loja : listaLojas) {
+            if (loja.getCpf().equals(nome)) {
+                lojaAuxiliar = loja;
+                break;
+            }
+        }
+        return lojaAuxiliar;
+    }
 //    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque, ArrayList<Pedido> historicoPedidos) {
 //        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque, historicoPedidos));
 //        ID++;
@@ -78,9 +88,16 @@ public class RepositorioLoja {
             }
         }
     }
-    public static void listar(){
+    public static void listarLojas(){
         for (Loja loja : listaLojas) {
             System.out.println(loja);
+        }
+    }
+
+    public static void listarTodosOsProdutos(){
+        for (Loja loja : listaLojas) {
+            System.out.println("Loja: " + loja.getNome());
+            loja.listaProdutos();
         }
     }
 }

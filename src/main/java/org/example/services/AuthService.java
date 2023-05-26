@@ -9,11 +9,11 @@ public class AuthService {
     public static void login(Entidades usuario){
         usuarioLogado = usuario;
     }
-    public static void login(int ID, String tipo) throws Exception {
+    public static void login(String nome, String tipo) throws Exception {
         if(tipo.equals("comprador")){
-            usuarioLogado = RepositorioComprador.getCompradorPorID(ID);
+            usuarioLogado = RepositorioComprador.getCompradorPorNome(nome);
         }else if(tipo.equals("loja")){
-            usuarioLogado = RepositorioLoja.getLojaPorID(ID);
+            usuarioLogado = RepositorioLoja.getLojaPorNome(nome);
         }else{
             throw new Exception("Usuario nao encontrado");
         }

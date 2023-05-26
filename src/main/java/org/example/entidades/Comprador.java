@@ -25,6 +25,11 @@ public class Comprador  extends  Entidades{
     public String toString(){
         return "nome do comprador -> " + this.nome + " email -> " + this.email + " endereco -> " + this.endereco + " ID -> " + this.ID;
     }
+
+    public boolean equals(Comprador comprador){
+
+        return true;
+    }
     public String getNome() {
         return nome;
     }
