@@ -86,6 +86,15 @@ public class RepositorioComprador implements Repositorio{
             }
         }
     }
+
+    public static ArrayList<Comprador> getListaCompradores() {
+        return listaCompradores;
+    }
+
+    public static void setListaCompradores(ArrayList<Comprador> listaCompradores) {
+        RepositorioComprador.listaCompradores = listaCompradores;
+    }
+
     public static void listar(){
         for (Comprador listaComprador : listaCompradores) {
             System.out.println(listaComprador);
