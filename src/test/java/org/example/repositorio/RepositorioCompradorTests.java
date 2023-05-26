@@ -1,12 +1,13 @@
-package org.example;
+package org.example.repositorio;
 
+import junit.framework.TestCase;
 import org.example.repositorio.RepositorioComprador;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class RepositorioCompradorTests {
+public class RepositorioCompradorTests extends TestCase {
     private RepositorioComprador repositorio;
 
     @Before
