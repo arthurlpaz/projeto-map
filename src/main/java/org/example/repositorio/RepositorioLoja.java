@@ -1,6 +1,5 @@
 package org.example.repositorio;
 
-import org.example.entidades.Comprador;
 import org.example.entidades.Loja;
 import org.example.produto.Estoque;
 
@@ -43,7 +42,7 @@ public class RepositorioLoja {
         }
         return lojaAuxiliar;
     }
-//    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque, ArrayList<Pedido> historicoPedidos) {
+    //    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque, ArrayList<Pedido> historicoPedidos) {
 //        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque, historicoPedidos));
 //        ID++;
 //    }
@@ -82,5 +81,13 @@ public class RepositorioLoja {
         for (Loja loja : listaLojas) {
             System.out.println(loja);
         }
+    }
+
+    public static ArrayList<Loja> getListaLojas() {
+        return listaLojas;
+    }
+
+    public void setListaLojas(ArrayList<Loja> listaLojas) {
+        this.listaLojas = listaLojas;
     }
 }
