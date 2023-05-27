@@ -97,7 +97,7 @@ public class CompradorTest extends TestCase {
     }
 
     @Test
-    public void testConstructor() {
+    public void testComprador() {
         Comprador comprador = new Comprador("Ana", "ana@example.com", "senha987", "987654321", "Rua D", 5);
         assertEquals("Ana", comprador.getNome());
         assertEquals("ana@example.com", comprador.getEmail());

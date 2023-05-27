@@ -9,11 +9,6 @@ public class MapProduto {
         this.quantidade = quantidade;
     }
 
-    public MapProduto(Produto produto) {
-        this.produto = produto;
-        this.quantidade = 0;
-    }
-
     public Produto getProduto() {
         return produto;
     }

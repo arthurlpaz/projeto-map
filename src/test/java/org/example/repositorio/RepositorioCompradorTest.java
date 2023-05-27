@@ -67,7 +67,7 @@ public class RepositorioCompradorTest {
         repositorio.inserir("Joao", "joao@email.com", "password", "123456789", "Rua A");
         Comprador comprador = repositorio.GetCompradoresPorCPF("123456789");
         assertNotNull(comprador);
-        assertEquals("John Doe", comprador.getNome());
+        assertEquals("Joao", comprador.getNome());
     }
 
     @Test

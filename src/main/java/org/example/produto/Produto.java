@@ -17,14 +17,6 @@ public class Produto {
         this.ID = ID;
     }
 
-    public Produto(String nome, double valor, String tipo, String marca, int ID) {
-        this.nome = nome;
-        this.valor = valor;
-        this.tipo = tipo;
-        this.marca = marca;
-        this.ID = ID;
-    }
-
     public String getNome() {
         return nome;
     }
