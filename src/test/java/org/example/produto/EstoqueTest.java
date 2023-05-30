@@ -32,11 +32,12 @@ public class EstoqueTest extends TestCase {
     }
 
     @Test
-    public void testRemover() {
+    public void testRemoverProduto() {
         estoque.inserir("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 10);
         estoque.inserir("Produto 2", 20.0, "Tipo 2", "Marca 2", "Descrição 2", 20);
 
-        estoque.remover(1);
+        //id produto || quantidade a remover
+        estoque.removerPorID(1,1);
 
         ArrayList<MapProduto> estoqueAtual = estoque.getEstoque();
         assertEquals(1, estoqueAtual.size());

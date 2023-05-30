@@ -1,6 +1,7 @@
 package org.example.repositorio;
 
 import org.example.entidades.Comprador;
+import org.example.entidades.Entidades;
 import org.example.entidades.Loja;
 import org.example.produto.Estoque;
 
@@ -97,7 +98,15 @@ public class RepositorioLoja {
     public static void listarTodosOsProdutos(){
         for (Loja loja : listaLojas) {
             System.out.println("Loja: " + loja.getNome());
-            loja.listaProdutos();
+            loja.getEstoque().listarProdutos();
         }
+    }
+
+    public static ArrayList<Loja> getListaLojas() {
+        return listaLojas;
+    }
+
+    public static void setListaLojas(ArrayList<Loja> listaLojas) {
+        RepositorioLoja.listaLojas = listaLojas;
     }
 }

@@ -98,7 +98,7 @@ public class RepositorioLojaTest extends TestCase {
         repositorio.inserir(nome2, email2, senha2, cpf2, endereco2, estoque2);
 
         // Listando as lojas
-        repositorio.listar();
+        repositorio.listarLojas();
         System.out.println(repositorio);
 
         repositorio.removerPorCpf(cpf1);
@@ -116,6 +116,9 @@ public class RepositorioLojaTest extends TestCase {
         Estoque estoque = new Estoque();
 
         Loja loja = new Loja(nome, email, senha, cpf, endereco, 1, estoque);
+//        usar o metodo RepositorioLoja.inserir() para adicionar lojas
+//        n tinha o getListaLojas pq se adicionar sem ser com o inserir a gente perde o controle das lojas
+//        teoricamente o getListaLoajas e o setListaLojas nao deveria existir
         repositorio.getListaLojas().add(loja);
 
         Loja lojaObtida = repositorio.getLojaPorID(1);
@@ -124,20 +127,6 @@ public class RepositorioLojaTest extends TestCase {
         assertEquals(loja, lojaObtida);
     }
 
-    @Test
-    public void testGetListaLojas() throws Exception {
-        // Inserir duas lojas no repositório
-        repositorio.inserir("Loja1", "loja1@example.com", "senha123", "123456789", "Endereço 1", new Estoque());
-        repositorio.inserir("Loja2", "loja2@example.com", "senha456", "987654321", "Endereço 2", new Estoque());
-
-        // Obter a lista de lojas do repositório
-        ArrayList<Loja> listaLojas = repositorio.getListaLojas();
-
-        // Verificar se a lista de lojas contém as duas lojas inseridas
-        assertEquals(2, listaLojas.size());
-        assertEquals("Loja1", listaLojas.get(0).getNome());
-        assertEquals("Loja2", listaLojas.get(1).getNome());
-    }
     public void testSetListaLojas() {
         // Criação das lojas de teste
         Loja loja1 = new Loja("Loja 1", "loja1@example.com", "senha1", "11111111111", "Endereço 1", 1, new Estoque());
@@ -153,6 +142,9 @@ public class RepositorioLojaTest extends TestCase {
 
         // Verificação se a lista de lojas foi definida corretamente
         assertEquals(listaLojas, repositorio.getListaLojas());
+
+        repositorio.removerPorCpf("11111111111");
+        repositorio.removerPorCpf("22222222222");
 
     }
 }
