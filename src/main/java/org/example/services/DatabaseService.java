@@ -73,13 +73,5 @@ public class DatabaseService {
             }
         }
     }
-    public static void main(String[] args) {
-        Gson gson = new Gson();
 
-        readDatabaseCompradores();
-        readDatabaseLojas();
-
-        RepositorioLoja.listarLojas();
-        RepositorioComprador.listar();
-    }
 }
