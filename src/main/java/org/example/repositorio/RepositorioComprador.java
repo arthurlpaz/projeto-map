@@ -51,10 +51,12 @@ public class RepositorioComprador implements Repositorio{
         }
         return compradorAuxiliar;
     }
-//    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Carrinho carrinhoDeCompras, ArrayList<Pedido> historicoPedidos) {
-//        listaCompradores.add(new Comprador(nome, email, senha, cpf, endereco, ID, carrinhoDeCompras, historicoPedidos));
-//        ID++;
-//    }
+
+    public static void inserir(Comprador newComprador){
+        listaCompradores.add(newComprador);
+        ID++;
+    }
+
     public static void inserir(String nome, String email, String senha, String cpf, String endereco) throws Exception {
         for (Comprador listaComprador : listaCompradores) {
             if(listaComprador.getNome().equals(nome)){
