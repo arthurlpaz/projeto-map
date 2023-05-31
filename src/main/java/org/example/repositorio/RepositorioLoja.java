@@ -73,6 +73,11 @@ public class RepositorioLoja {
         listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque));
         ID++;
     }
+    public static void inserir(Loja newLoja){
+        listaLojas.add(newLoja);
+        ID++;
+    }
+
     public static void removerPorCpf(String Cpf) {
         for (int i = 0; i < listaLojas.size(); i++) {
             if(listaLojas.get(i).getCpf().equals(Cpf)){
@@ -109,4 +114,5 @@ public class RepositorioLoja {
     public static void setListaLojas(ArrayList<Loja> listaLojas) {
         RepositorioLoja.listaLojas = listaLojas;
     }
+
 }

@@ -12,7 +12,7 @@ import org.example.utils.menus.loja.MenuLoja;
 import java.util.Scanner;
 
 public class Fachada {
-    public static void main(String[] args) {
+    public static void run() {
         //inicia os repositorios de comprador e de loja
         RepositorioComprador.getInstancia();
         RepositorioLoja.getInstancia();
