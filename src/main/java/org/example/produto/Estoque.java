@@ -11,6 +11,10 @@ public class Estoque {
         ID = 1;
     }
     public void listarProdutos(){
+        if(estoque.size() == 0){
+            System.out.println("a loja nao possui nenhum produto em estoque");
+            return;
+        }
         for (MapProduto produto : estoque) {
             System.out.println(produto.getProduto() + " quantidade -> " + produto.getQuantidade());
         }

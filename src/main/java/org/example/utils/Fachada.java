@@ -122,6 +122,7 @@ public class Fachada {
             //pede o nome de uma loja e mostra todos os produtos dela
             case 2 -> {
                 String nomeLoja;
+                System.out.println("digite o nome da loja que deseja ver os produtos");
                 nomeLoja = sc.nextLine();
 
                 Loja auxLoja = RepositorioLoja.getLojaPorNome(nomeLoja);
