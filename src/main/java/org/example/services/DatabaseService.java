@@ -16,9 +16,9 @@ public class DatabaseService {
     }
 
     public static void writeDataBaseCompradores(){
-        RepositorioComprador.getInstancia()
-        ;
+        RepositorioComprador.getInstancia();
         ArrayList<String> data = new ArrayList<>();
+
         try{
             for (int i = 0; i < RepositorioComprador.getListaCompradores().size(); i++) {
                 data.add(objectToJson(RepositorioComprador.getCompradorPorID(i)));
@@ -26,7 +26,7 @@ public class DatabaseService {
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        
         FileHandlerService.writeDataLineByLine("./src/main/java/org/example/databases/compradores.json", data);
     }
 

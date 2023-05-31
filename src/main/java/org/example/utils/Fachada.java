@@ -2,6 +2,7 @@ package org.example.utils;
 
 import org.example.entidades.Loja;
 import org.example.services.AuthService;
+import org.example.services.DatabaseService;
 import org.example.produto.Produto;
 import org.example.repositorio.RepositorioComprador;
 import org.example.repositorio.RepositorioLoja;
@@ -16,6 +17,9 @@ public class Fachada {
         //inicia os repositorios de comprador e de loja
         RepositorioComprador.getInstancia();
         RepositorioLoja.getInstancia();
+
+        DatabaseService.readDatabaseCompradores();
+        DatabaseService.readDatabaseLojas();
 
         try{
             RepositorioLoja.inserir("a","a","a","a","a",null);
@@ -42,6 +46,10 @@ public class Fachada {
                 escolha = menuUsuarioDeslogado();
             }
         }
+
+        DatabaseService.writeDataBaseCompradores();
+        DatabaseService.writeDataBaseLoja();
+
     }
     public static int menuUsuarioDeslogado(){
         int escolha;
