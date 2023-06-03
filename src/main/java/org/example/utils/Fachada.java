@@ -21,12 +21,6 @@ public class Fachada {
         DatabaseService.readDatabaseCompradores();
         DatabaseService.readDatabaseLojas();
 
-        try{
-            RepositorioLoja.inserir("a","a","a","a","a",null);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-
         int escolha = 0;
         while(escolha != 9){
             if(AuthService.isLogged()){

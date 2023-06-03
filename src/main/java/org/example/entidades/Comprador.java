@@ -27,8 +27,19 @@ public class Comprador  extends  Entidades{
     }
 
     public boolean equals(Comprador comprador){
-
-        return true;
+        if(this.cpf.equals(comprador.getCpf())){
+            return true;
+        }
+        if(this.nome.equals(comprador.getNome())){
+            return true;
+        }
+        if(this.ID == comprador.getID()){
+            return true;
+        }
+        if(this.email.equals(comprador.getEmail())){
+            return true;
+        }
+            return false;
     }
     public String getNome() {
         return nome;

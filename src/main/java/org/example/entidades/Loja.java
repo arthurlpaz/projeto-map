@@ -30,6 +30,22 @@ public class Loja  extends  Entidades{
         this.ID = ID;
         this.estoque = estoque;
     }
+
+    public boolean equals(Loja loja){
+        if(this.cpf.equals(loja.getCpf())){
+            return true;
+        }
+        if(this.nome.equals(loja.getNome())){
+            return true;
+        }
+        if(this.ID == loja.getID()){
+            return true;
+        }
+        if(this.email.equals(loja.getEmail())){
+            return true;
+        }
+        return false;
+    }
     @Override
     public String toString(){
         return "nome da loja-> " + this.nome + " email -> " + this.email + " endereco -> " + this.endereco + " ID -> " + this.ID;

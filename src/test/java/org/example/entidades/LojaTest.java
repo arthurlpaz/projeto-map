@@ -129,7 +129,7 @@ public class LojaTest extends TestCase {
 
     @Test
     public void testToString() {
-        String stringEsperada = "nome da loja-> Minha Lojaemail -> loja@example.comendereco -> Rua PrincipalID -> 1";
+        String stringEsperada = "nome da loja-> Minha Loja email -> loja@example.com endereco -> Rua Principal ID -> 1";
         String stringAtual = loja.toString();
         assertEquals(stringEsperada, stringAtual);
     }
