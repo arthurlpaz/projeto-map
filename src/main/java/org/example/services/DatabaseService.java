@@ -7,9 +7,10 @@ import org.example.repositorio.RepositorioComprador;
 import org.example.repositorio.RepositorioLoja;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseService {
-    private static Gson gson = new Gson();
+    static Gson gson = new Gson();
 
     public static String objectToJson(Entidades toJson){
         return gson.toJson(toJson);
@@ -45,7 +46,7 @@ public class DatabaseService {
         FileHandlerService.writeDataLineByLine("./src/main/java/org/example/databases/lojas.json", data);
     }
 
-    public static void readDatabaseCompradores() {
+    public static List<Comprador> readDatabaseCompradores() {
         RepositorioComprador.getInstancia();
 
         ArrayList<String> databaseCompradores = FileHandlerService.readDataDataLineByLine("./src/main/java/org/example/databases/compradores.json");
@@ -57,6 +58,7 @@ public class DatabaseService {
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
     public static void readDatabaseLojas() {

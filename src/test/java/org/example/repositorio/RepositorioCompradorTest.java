@@ -92,5 +92,19 @@ public class RepositorioCompradorTest {
         assertEquals(listaCompradores, repositorio.getListaCompradores());
     }
 
+    @Test
+    public void testListarCompradores() {
+        Comprador comprador1 = new Comprador("Comprador 1", "comprador1@example.com", "senha1", "11111111111", "Endereço 1", 1);
+        Comprador comprador2 = new Comprador("Comprador 2", "comprador2@example.com", "senha2", "22222222222", "Endereço 2", 2);
+
+        repositorio.inserir(comprador1);
+        repositorio.inserir(comprador2);
+
+        repositorio.listar();
+
+        repositorio.removerPorCpf("11111111111");
+        repositorio.removerPorCpf("22222222222");
+    }
+
 
 }

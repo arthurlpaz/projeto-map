@@ -24,7 +24,7 @@ public class LojaTest extends TestCase {
         String endereco = "Rua Principal";
         int id = 1;
 
-        Loja loja = new Loja(nome, email, senha, cpf, endereco, id);
+        Loja loja = new Loja();
 
         assertEquals(nome, loja.getNome());
         assertEquals(email, loja.getEmail());

@@ -33,11 +33,6 @@ public class FileHandlerService {
             e.printStackTrace();
         }
 
-        if(listOfJson.size() >= 3){
-            listOfJson.remove(0);
-            listOfJson.remove(listOfJson.size()-1);
-        }
-
         return listOfJson;
     }
     public static void writeDataLineByLine(String filePath, ArrayList<String> database)
@@ -53,14 +48,10 @@ public class FileHandlerService {
             // Creates a BufferedWriter
             BufferedWriter output = new BufferedWriter(file);
 
-            output.write("[\n");
-
             // Writes data to the file
             for (String s : database) {
                 output.write(s + "\n");
             }
-
-            output.write("]");
 
 
             // Flushes data to the destination

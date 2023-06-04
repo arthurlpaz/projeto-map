@@ -64,7 +64,11 @@ public class MenuLoja {
         System.out.println("digite a quantidade do produto de que deseja remover");
         quantidade = sc.nextInt();
 
-        lojaLogada.getEstoque().removerPorNome(nome, quantidade);
+        try{
+            lojaLogada.getEstoque().removerPorNome(nome, quantidade);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void atualizarDadosDoProduto(Loja lojaLogada) {

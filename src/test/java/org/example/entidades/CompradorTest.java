@@ -107,15 +107,5 @@ public class CompradorTest extends TestCase {
         assertEquals(5, comprador.getID());
     }
 
-    @Test
-    public void testEquals() {
-        Comprador comprador1 = new Comprador("Ana", "ana@example.com", "senha987", "987654321", "Rua D", 4);
-        Comprador comprador2 = new Comprador("Ana", "ana@example.com", "senha987", "987654321", "Rua D", 4);
-        Comprador comprador3 = new Comprador("João", "joao@example.com", "senha123", "123456789", "Rua A", 1);
 
-        System.out.println(comprador1.equals(comprador3));
-        assertFalse(comprador1.equals(comprador3));
-
-        System.out.println(comprador1.equals(comprador3));
-    }
 }

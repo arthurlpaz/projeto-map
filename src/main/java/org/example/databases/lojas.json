@@ -1,3 +1,1 @@
-[
-{"nome":"a","email":"a","senha":"a","cpf":"a","endereco":"a","ID":0,"estoque":{"estoque":[],"ID":1}}
-]
+{"nome":"a","email":"a","senha":"a","cpf":"a","endereco":"a","ID":0,"estoque":{"estoque":[{"produto":{"nome":"produto a","valor":13.0,"tipo":"a","marca":"a","descricao":"a","ID":1},"quantidade":2}],"ID":2}}

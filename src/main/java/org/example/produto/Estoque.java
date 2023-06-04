@@ -19,6 +19,7 @@ public class Estoque {
             System.out.println(produto.getProduto() + " quantidade -> " + produto.getQuantidade());
         }
     }
+
     public void inserir(String nome, double valor, String tipo, String marca, String descricao, int quantidade){
         Produto auxProduto = new Produto(nome, valor, tipo, marca, descricao, ID);
         for (MapProduto mapProduto : estoque) {
@@ -35,25 +36,31 @@ public class Estoque {
         estoque.add(new MapProduto(auxProduto, quantidade));
         ID++;
     }
-    public void removerPorID(int ID_produto_a_remover, int quantidade){
+    public void removerPorID(int ID_produto_a_remover, int quantidade) throws Exception{
         for (int i = 0; i < estoque.size(); i++) {
-            if(estoque.get(i).getQuantidade() < quantidade){
-                estoque.remove(i);
-                break;
-            }else{
-                estoque.get(i).setQuantidade(estoque.get(i).getQuantidade()-quantidade);
-            }
+            if(estoque.get(i).getProduto().getID() == ID_produto_a_remover){
+                if(estoque.get(i).getQuantidade() == quantidade){
+                    estoque.remove(i);
+                }else if(estoque.get(i).getQuantidade() < quantidade){
+                    throw new Exception("não ha produtos o suficiente");
+                }else{
+                    estoque.get(i).setQuantidade(estoque.get(i).getQuantidade() - quantidade);
+                }
+                return;
+            };
         }
     }
-    public void removerPorNome(String nome, int quantidade){
+    public void removerPorNome(String nome, int quantidade) throws Exception{
         for (int i = 0; i < estoque.size(); i++) {
             if(estoque.get(i).getProduto().getNome().equals(nome)){
-                if(estoque.get(i).getQuantidade() < quantidade){
+                if(estoque.get(i).getQuantidade() == quantidade){
                     estoque.remove(i);
-                    break;
+                }else if(estoque.get(i).getQuantidade() < quantidade){
+                    throw new Exception("não ha produtos o suficiente");
                 }else{
-                    estoque.get(i).setQuantidade(estoque.get(i).getQuantidade()-quantidade);
+                    estoque.get(i).setQuantidade(estoque.get(i).getQuantidade() - quantidade);
                 }
+                return;
             };
         }
     }
@@ -72,5 +79,13 @@ public class Estoque {
             }
         }
         throw new Exception("produto nao encontrado");
+    }
+
+    public int getQuantidadeProdutos() {
+        return getQuantidadeProdutos();
+    }
+
+    public MapProduto getProdutoPorNome(String nomeProduto) {
+        return getProdutoPorNome(nomeProduto);
     }
 }

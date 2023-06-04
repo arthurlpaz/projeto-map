@@ -13,6 +13,7 @@ public class MenuDeslogado {
         System.out.println("2 - Fazer login");
         System.out.println("9 - Fechar sistema");
     }
+
     public static void registerPage(String tipoUsuario) throws Exception {
         if(tipoUsuario.equals("comprador")){
             registerPageComprador();
@@ -104,9 +105,15 @@ public class MenuDeslogado {
 
         System.out.println("insira os dados: Tipo de usuario que vai logar ");
         tipoUsuario = sc.nextLine();
-        System.out.println("insira os dados: nome" );
+        System.out.println("insira os dados: nome");
         nome = sc.nextLine();
 
-        AuthService.login(nome, tipoUsuario);
+        AuthService authService = new AuthService();
+
+        try {
+            authService.login(nome, tipoUsuario);
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer login: " + e.getMessage());
+        }
     }
 }

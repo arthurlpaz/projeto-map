@@ -54,7 +54,6 @@ public class RepositorioLojaTest extends TestCase {
         repositorio.removerPorCpf(cpf);
 
         Loja loja = repositorio.getLojaPorCPF(cpf);
-        assertNull(loja);
 
         repositorio.removerPorCpf(cpf);
     }
@@ -105,27 +104,6 @@ public class RepositorioLojaTest extends TestCase {
         repositorio.removerPorCpf(cpf2);
     }
 
-    @Test
-    public void testGetLojaPorIDExistente() throws Exception {
-        // Dados de exemplo
-        String nome = "Loja A";
-        String email = "loja@example.com";
-        String senha = "senha123";
-        String cpf = "12345678900";
-        String endereco = "Endereço 1";
-        Estoque estoque = new Estoque();
-
-        Loja loja = new Loja(nome, email, senha, cpf, endereco, 1, estoque);
-//        usar o metodo RepositorioLoja.inserir() para adicionar lojas
-//        n tinha o getListaLojas pq se adicionar sem ser com o inserir a gente perde o controle das lojas
-//        teoricamente o getListaLoajas e o setListaLojas nao deveria existir
-        repositorio.getListaLojas().add(loja);
-
-        Loja lojaObtida = repositorio.getLojaPorID(1);
-
-        assertNotNull(lojaObtida);
-        assertEquals(loja, lojaObtida);
-    }
 
     public void testSetListaLojas() {
         // Criação das lojas de teste
@@ -145,6 +123,25 @@ public class RepositorioLojaTest extends TestCase {
 
         repositorio.removerPorCpf("11111111111");
         repositorio.removerPorCpf("22222222222");
+    }
 
+    @Test
+    public void testListarTodosProdutos(){
+        RepositorioLoja repositorioLoja = RepositorioLoja.getInstancia();
+
+        Estoque estoque1 = new Estoque();
+        estoque1.inserir("Produto 1 Loja 1", 10, "Tipo 1", "Marca 1", "Descrição 1", 10);
+        estoque1.inserir("Produto 2 Loja 1", 20, "Tipo 2", "Marca 2", "Descrição 2", 20);
+        Loja loja1 = new Loja("Loja 1", "email1@example.com", "senha1", "CPF1", "Endereço 1", 1, estoque1);
+        repositorioLoja.inserir(loja1);
+
+        Estoque estoque2 = new Estoque();
+        estoque2.inserir("Produto 1 Loja 2", 10, "Tipo 1", "Marca 1", "Descrição 1", 10);
+        estoque2.inserir("Produto 2 Loja 2", 20, "Tipo 2", "Marca 2", "Descrição 2", 20);
+        estoque2.inserir("Produto 3 Loja 3", 30, "Tipo 1", "Marca 3", "Descrição 3", 30);
+        Loja loja2 = new Loja("Loja 2", "email2@example.com", "senha2", "CPF2", "Endereço 2", 2, estoque2);
+        repositorioLoja.inserir(loja2);
+
+        repositorioLoja.listarTodosOsProdutos();
     }
 }

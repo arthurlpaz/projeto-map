@@ -2,8 +2,6 @@ package org.example.entidades;
 
 import org.example.produto.Estoque;
 
-import java.util.ArrayList;
-
 public class Loja  extends  Entidades{
     private String nome;
     private String email;
@@ -13,7 +11,7 @@ public class Loja  extends  Entidades{
     private int ID;
     private Estoque estoque;
 
-    public Loja(String nome, String email, String senha, String cpf, String endereco, int ID) {
+    public Loja() {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -46,6 +44,7 @@ public class Loja  extends  Entidades{
         }
         return false;
     }
+
     @Override
     public String toString(){
         return "nome da loja-> " + this.nome + " email -> " + this.email + " endereco -> " + this.endereco + " ID -> " + this.ID;
