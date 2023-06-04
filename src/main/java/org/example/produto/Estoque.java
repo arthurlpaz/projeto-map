@@ -16,7 +16,7 @@ public class Estoque {
             return;
         }
         for (MapProduto produto : estoque) {
-            System.out.println(produto.getProduto() + " quantidade -> " + produto.getQuantidade());
+            System.out.println(produto.getProduto() + " | quantidade -> " + produto.getQuantidade());
         }
     }
 

@@ -9,9 +9,7 @@ public class Loja  extends  Entidades{
         super(nome, email, senha, cpf, endereco, ID);
         this.estoque = estoque;
     }
-    public Loja(String nome, String email, String senha, String cpf, String endereco, int ID) {
-        super(nome, email, senha, cpf, endereco, ID);
-    }
+
     public Estoque getEstoque() {
         if(estoque == null){
             estoque = new Estoque();

@@ -45,8 +45,8 @@ public class EstoqueTest extends TestCase {
         String consoleOutput = outputStream.toString();
 
         // Verifica a saída do console com o resultado esperado
-        String expectedOutput = "nome do produto -> Produto 1 ID -> 1 valor -> 10.0 quantidade -> 10\r\n" +
-                                "nome do produto -> Produto 2 ID -> 2 valor -> 20.0 quantidade -> 20\r\n";
+        String expectedOutput = "nome do produto -> Produto 1 | ID -> 1 | valor -> 10.0 | quantidade -> 10\n" +
+                                "nome do produto -> Produto 2 | ID -> 2 | valor -> 20.0 | quantidade -> 20\n";
         System.out.println(expectedOutput);
 
         System.out.println(consoleOutput);
