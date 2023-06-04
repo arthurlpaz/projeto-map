@@ -74,7 +74,9 @@ public class RepositorioLoja {
     }
     public static void inserir(Loja newLoja){
         listaLojas.add(newLoja);
-        ID++;
+        if(newLoja.getID() > ID){
+            ID = newLoja.getID();
+        }
     }
 
     public static void removerPorCpf(String Cpf) {

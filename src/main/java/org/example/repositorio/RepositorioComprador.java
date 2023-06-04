@@ -53,7 +53,9 @@ public class RepositorioComprador implements Repositorio{
 
     public static void inserir(Comprador newComprador){
         listaCompradores.add(newComprador);
-        ID++;
+        if(newComprador.getID() > ID){
+            ID = newComprador.getID();
+        }
     }
 
     public static void inserir(String nome, String email, String senha, String cpf, String endereco) throws Exception {

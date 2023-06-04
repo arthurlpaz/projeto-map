@@ -180,8 +180,6 @@ public class AuthServiceTest extends TestCase {
             e.printStackTrace();
         }
 
-        Comprador auxComprador = new Comprador("testeComprador", "testeComprador@email.com", "12345", "11111111111", "enderecoTeste", 0);
-
         try{
             assertTrue(AuthService.tipoUsuario().equals("org.example.entidades.Comprador"));
         }catch (Exception e){
