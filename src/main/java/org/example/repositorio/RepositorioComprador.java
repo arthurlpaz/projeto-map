@@ -31,15 +31,14 @@ public class RepositorioComprador implements Repositorio{
         }
         return compradorAuxiliar;
     }
-    public static Comprador getCompradorPorNome(String nome){
+    public static Comprador getCompradorPorNome(String nome) throws Exception{
         Comprador compradorAuxiliar = null;
         for (Comprador listaComprador : listaCompradores) {
             if (listaComprador.getNome().equals(nome)) {
-                compradorAuxiliar = listaComprador;
-                break;
+                return compradorAuxiliar = listaComprador;
             }
         }
-        return compradorAuxiliar;
+        throw new Exception("Usuario nao encontrado");
     }
     public static Comprador getCompradoresPorCPF(String Cpf){
         Comprador compradorAuxiliar = null;

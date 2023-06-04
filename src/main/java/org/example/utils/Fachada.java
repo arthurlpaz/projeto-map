@@ -119,8 +119,12 @@ public class Fachada {
                 System.out.println("digite o nome da loja que deseja ver os produtos");
                 nomeLoja = sc.nextLine();
 
-                Loja auxLoja = RepositorioLoja.getLojaPorNome(nomeLoja);
-                auxLoja.getEstoque().listarProdutos();
+                try{
+                    Loja auxLoja = RepositorioLoja.getLojaPorNome(nomeLoja);
+                    auxLoja.getEstoque().listarProdutos();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
             //mostra todos os produtos de todas as lojas cadastradas

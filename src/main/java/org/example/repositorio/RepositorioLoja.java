@@ -44,15 +44,14 @@ public class RepositorioLoja {
         }
         return lojaAuxiliar;
     }
-    public static Loja getLojaPorNome(String nome){
+    public static Loja getLojaPorNome(String nome) throws Exception{
         Loja lojaAuxiliar = null;
         for (Loja loja : listaLojas) {
-            if (loja.getCpf().equals(nome)) {
-                lojaAuxiliar = loja;
-                break;
+            if (loja.getNome().equals(nome)) {
+                return lojaAuxiliar = loja;
             }
         }
-        return lojaAuxiliar;
+        throw new Exception("Usuario nao encontrado");
     }
 //    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque, ArrayList<Pedido> historicoPedidos) {
 //        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque, historicoPedidos));
