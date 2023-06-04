@@ -92,7 +92,7 @@ public class ProdutoTest extends TestCase {
     public void testToString() {
         Produto produto = new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1);
 
-        String expectedString = "nome do produto -> Produto 1 ID -> 1 valor -> 10.0";
+        String expectedString = "nome do produto -> Produto 1 | ID -> 1 | valor -> 10.0";
         assertEquals(expectedString, produto.toString());
     }
 

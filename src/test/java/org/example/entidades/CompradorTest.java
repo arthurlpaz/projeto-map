@@ -91,7 +91,7 @@ public class CompradorTest extends TestCase {
     @Test
     public void testToString() {
         Comprador comprador = new Comprador("Pedro", "pedro@example.com", "senha789", "555555555", "Rua C", 3);
-        String expectedString = "nome do comprador -> Pedro email -> pedro@example.com endereco -> Rua C ID -> 3";
+        String expectedString = "nome -> Pedro | email -> pedro@example.com | endereco -> Rua C | ID -> 3";
         String compradorString = comprador.toString();
         assertEquals(expectedString, compradorString);
     }

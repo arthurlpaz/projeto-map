@@ -16,26 +16,6 @@ public class LojaTest extends TestCase {
     }
 
     @Test
-    public void testLoja() {
-        String nome = "Minha Loja";
-        String email = "loja@example.com";
-        String senha = "senha123";
-        String cpf = "123456789";
-        String endereco = "Rua Principal";
-        int id = 1;
-
-        Loja loja = new Loja();
-
-        assertEquals(nome, loja.getNome());
-        assertEquals(email, loja.getEmail());
-        assertEquals(senha, loja.getSenha());
-        assertEquals(cpf, loja.getCpf());
-        assertEquals(endereco, loja.getEndereco());
-        assertEquals(id, loja.getID());
-        assertNotNull(loja.getEstoque());
-    }
-
-    @Test
     public void testGetNome() {
         String nome = loja.getNome();
         assertEquals("Minha Loja", nome);
@@ -129,7 +109,7 @@ public class LojaTest extends TestCase {
 
     @Test
     public void testToString() {
-        String stringEsperada = "nome da loja-> Minha Loja email -> loja@example.com endereco -> Rua Principal ID -> 1";
+        String stringEsperada = "nome -> Minha Loja | email -> loja@example.com | endereco -> Rua Principal | ID -> 1";
         String stringAtual = loja.toString();
         assertEquals(stringEsperada, stringAtual);
     }

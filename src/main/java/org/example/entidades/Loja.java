@@ -3,100 +3,15 @@ package org.example.entidades;
 import org.example.produto.Estoque;
 
 public class Loja  extends  Entidades{
-    private String nome;
-    private String email;
-    private String senha;
-    private String cpf;
-    private String endereco;
-    private int ID;
     private Estoque estoque;
 
-    public Loja() {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.ID = ID;
-    }
     public Loja(String nome, String email, String senha, String cpf, String endereco, int ID, Estoque estoque) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.ID = ID;
+        super(nome, email, senha, cpf, endereco, ID);
         this.estoque = estoque;
     }
-
-    public boolean equals(Loja loja){
-        if(this.cpf.equals(loja.getCpf())){
-            return true;
-        }
-        if(this.nome.equals(loja.getNome())){
-            return true;
-        }
-        if(this.ID == loja.getID()){
-            return true;
-        }
-        if(this.email.equals(loja.getEmail())){
-            return true;
-        }
-        return false;
+    public Loja(String nome, String email, String senha, String cpf, String endereco, int ID) {
+        super(nome, email, senha, cpf, endereco, ID);
     }
-
-    @Override
-    public String toString(){
-        return "nome da loja-> " + this.nome + " email -> " + this.email + " endereco -> " + this.endereco + " ID -> " + this.ID;
-    }
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public Estoque getEstoque() {
         if(estoque == null){
             estoque = new Estoque();
