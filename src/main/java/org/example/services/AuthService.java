@@ -6,9 +6,7 @@ import org.example.repositorio.RepositorioLoja;
 
 public class AuthService {
     private static Entidades usuarioLogado = null;
-    public static void login(Entidades usuario){
-        usuarioLogado = usuario;
-    }
+
     public static void login(String nome, String tipo) throws Exception {
         if(tipo.equals("comprador")){
             usuarioLogado = RepositorioComprador.getCompradorPorNome(nome);

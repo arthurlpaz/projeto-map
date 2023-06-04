@@ -31,15 +31,14 @@ public class RepositorioComprador implements Repositorio{
         }
         return compradorAuxiliar;
     }
-    public static Comprador getCompradorPorNome(String nome){
+    public static Comprador getCompradorPorNome(String nome) throws Exception{
         Comprador compradorAuxiliar = null;
         for (Comprador listaComprador : listaCompradores) {
             if (listaComprador.getNome().equals(nome)) {
-                compradorAuxiliar = listaComprador;
-                break;
+                return compradorAuxiliar = listaComprador;
             }
         }
-        return compradorAuxiliar;
+        throw new Exception("Usuario nao encontrado");
     }
     public static Comprador getCompradoresPorCPF(String Cpf){
         Comprador compradorAuxiliar = null;
@@ -54,7 +53,9 @@ public class RepositorioComprador implements Repositorio{
 
     public static void inserir(Comprador newComprador){
         listaCompradores.add(newComprador);
-        ID++;
+        if(newComprador.getID() > ID){
+            ID = newComprador.getID();
+        }
     }
 
     public static void inserir(String nome, String email, String senha, String cpf, String endereco) throws Exception {

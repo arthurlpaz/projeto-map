@@ -10,7 +10,6 @@ public class Comprador  extends  Entidades{
     private String endereco;
     private int ID;
 
-
     public Comprador(String nome, String email, String senha, String cpf, String endereco, int ID) {
         this.nome = nome;
         this.email = email;
