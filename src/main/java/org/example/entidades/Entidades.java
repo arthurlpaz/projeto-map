@@ -22,22 +22,6 @@ public class Entidades {
         return "nome -> " + this.nome + " | email -> " + this.email + " | endereco -> " + this.endereco + " | ID -> " + this.ID;
     }
 
-   public boolean equals(Entidades entidade){
-        if(this.cpf.equals(entidade.getCpf())){
-            return true;
-        }
-        if(this.nome.equals(entidade.getNome())){
-            return true;
-        }
-        if(this.ID == entidade.getID()){
-            return true;
-        }
-        if(this.email.equals(entidade.getEmail())){
-            return true;
-        }
-        return false;
-    }
-
     public String getNome() {
         return nome;
     }

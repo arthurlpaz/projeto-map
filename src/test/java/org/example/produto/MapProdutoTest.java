@@ -48,12 +48,12 @@ public class MapProdutoTest extends TestCase {
         Produto produto = new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1);
         MapProduto mapProduto = new MapProduto(produto, 10);
 
-        assertEquals("Produto 1", mapProduto.produto.getNome());
-        assertEquals(10.0, mapProduto.produto.getValor());
-        assertEquals("Tipo 1", mapProduto.produto.getTipo());
-        assertEquals("Marca 1", mapProduto.produto.getMarca());
-        assertEquals("Descrição 1", mapProduto.produto.getDescricao());
-        assertEquals(1, mapProduto.produto.getID());
+        assertEquals("Produto 1", mapProduto.getProduto().getNome());
+        assertEquals(10.0, mapProduto.getProduto().getValor());
+        assertEquals("Tipo 1", mapProduto.getProduto().getTipo());
+        assertEquals("Marca 1", mapProduto.getProduto().getMarca());
+        assertEquals("Descrição 1", mapProduto.getProduto().getDescricao());
+        assertEquals(1, mapProduto.getProduto().getID());
         assertEquals(10, mapProduto.getQuantidade());
 
     }

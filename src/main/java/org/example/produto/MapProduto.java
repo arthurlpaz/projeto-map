@@ -1,8 +1,8 @@
 package org.example.produto;
 
 public class MapProduto {
-    Produto produto;
-    int quantidade;
+    private Produto produto;
+    private int quantidade;
 
     public MapProduto(Produto produto, int quantidade) {
         this.produto = produto;

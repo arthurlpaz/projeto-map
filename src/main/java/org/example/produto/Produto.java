@@ -69,7 +69,7 @@ public class Produto {
         return "nome do produto -> " +this.nome + " | ID -> " + this.ID + " | valor -> " + this.valor;
     }
 
-    public boolean equals(Produto produto) throws Exception {
+    public boolean equals(Produto produto) {
         return this.nome.equals(produto.getNome());
     }
 }

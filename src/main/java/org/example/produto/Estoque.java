@@ -81,11 +81,4 @@ public class Estoque {
         throw new Exception("produto nao encontrado");
     }
 
-    public int getQuantidadeProdutos() {
-        return getQuantidadeProdutos();
-    }
-
-    public MapProduto getProdutoPorNome(String nomeProduto) {
-        return getProdutoPorNome(nomeProduto);
-    }
-}
+ }
