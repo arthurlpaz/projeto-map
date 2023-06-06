@@ -11,6 +11,7 @@ public class MenuDeslogado {
         System.out.println("Escolha a opção");
         System.out.println("1 - Fazer cadastro no sistema");
         System.out.println("2 - Fazer login");
+        System.out.println("3 - Excluir usuario");
         System.out.println("9 - Fechar sistema");
     }
 
@@ -24,9 +25,14 @@ public class MenuDeslogado {
         }
     }
 
-    //TODO
-    public static void deletePage(){
-
+    public static void deletePage(String tipoUsuario, String nome) throws Exception{
+        if(tipoUsuario.equals("comprador")){
+            RepositorioComprador.removerPorNome(nome);
+        } else if (tipoUsuario.equals("loja")) {
+            RepositorioLoja.removerPorNome(nome);
+        }else{
+            throw new Exception("Tipo de usuario nao identificado");
+        }
     }
 
     public static void registerPageComprador() throws Exception {
@@ -103,7 +109,7 @@ public class MenuDeslogado {
         String nome;
         String tipoUsuario;
 
-        System.out.println("insira os dados: Tipo de usuario que vai logar ");
+        System.out.println("insira os dados: Tipo de usuario que vai logar (comprador / loja)");
         tipoUsuario = sc.nextLine();
         System.out.println("insira os dados: nome");
         nome = sc.nextLine();

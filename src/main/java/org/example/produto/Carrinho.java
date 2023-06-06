@@ -1,5 +1,7 @@
 package org.example.produto;
 
+import org.example.repositorio.RepositorioLoja;
+
 import java.util.ArrayList;
 
 public class Carrinho {
@@ -17,7 +19,8 @@ public class Carrinho {
         this.valorTotal = valorTotal;
     }
 
-    public void inserirNoCarrinho(String loja, Produto produto, int quantidade){
+    public void inserirNoCarrinho(String loja, Produto produto, int quantidade) throws Exception{
+        //verifica se ja possuem produtos da loja selecionada
         for (MapLojaProduto mapLojaProduto : produtosPorLoja) {
             if (mapLojaProduto.getLoja().equals(loja)) {
                 mapLojaProduto.inserirProduto(produto, quantidade);
@@ -25,19 +28,23 @@ public class Carrinho {
             }
         }
 
+        //adiciona loja à lista caso ela não esteja
         ArrayList<MapProduto> mapProdutos = new ArrayList<>();
         mapProdutos.add(new MapProduto(produto, quantidade));
 
         produtosPorLoja.add(new MapLojaProduto(loja, mapProdutos));
         valorTotal += produto.getValor() * quantidade;
-
     }
 
     public void removerDoCarrinho(String loja, Produto produto, int quantidade) throws Exception{
-        for (MapLojaProduto mapLojaProduto : produtosPorLoja) {
-            if (mapLojaProduto.getLoja().equals(loja)) {
-                mapLojaProduto.removerProduto(produto.getNome(), quantidade);
-                valorTotal = calculaValorTotal();
+        for (int i = 0; i < produtosPorLoja.size(); i++) {
+            if(produtosPorLoja.get(i).getLoja().equals(loja)){
+                produtosPorLoja.get(i).removerProduto(produto.getNome(), quantidade);
+                System.out.println("total = " + calculaValorTotal());
+                if(produtosPorLoja.get(i).getListaProdutos().size() == 0){
+                    produtosPorLoja.remove(i);
+                    return;
+                }
                 return;
             }
         }
@@ -53,6 +60,21 @@ public class Carrinho {
         }
 
         return total;
+    }
+
+    public void listarItemsCarrinho() throws Exception{
+        if (produtosPorLoja.size() == 0){
+            throw new Exception("O usuario nao possui nenhum item no carrinho");
+        }
+
+        for (int i = 0; i < produtosPorLoja.size(); i++) {
+            System.out.println(produtosPorLoja.get(i).getLoja());
+            for (int j = 0; j < produtosPorLoja.get(i).getListaProdutos().size(); j++) {
+                System.out.println(produtosPorLoja.get(i).getListaProdutos().get(j));
+            }
+        }
+
+        System.out.println("Valor total: " + this.valorTotal);
     }
 
     public ArrayList<MapLojaProduto> getProdutosPorLoja() {

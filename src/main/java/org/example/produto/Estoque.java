@@ -80,5 +80,12 @@ public class Estoque {
         }
         throw new Exception("produto nao encontrado");
     }
-
+    public MapProduto getProdutoPorNome(String nome) throws Exception{
+        for (MapProduto mapProduto : estoque) {
+            if (mapProduto.getProduto().getNome().equals(nome)){
+                return mapProduto;
+            }
+        }
+        throw new Exception("produto nao encontrado");
+    }
  }

@@ -1,1 +1,3 @@
-{"nome":"a","email":"a","senha":"a","cpf":"a","endereco":"a","ID":0,"estoque":{"estoque":[{"produto":{"nome":"produto a","valor":13.0,"tipo":"a","marca":"a","descricao":"a","ID":1},"quantidade":2}],"ID":2}}
+{"estoque":{"estoque":[{"produto":{"nome":"produto a","valor":13.0,"tipo":"a","marca":"a","descricao":"a","ID":1},"quantidade":2}],"ID":2},"nome":"a","email":"a","senha":"a","cpf":"a","endereco":"a","ID":0}
+{"estoque":{"estoque":[{"produto":{"nome":"produto 1","valor":10.0,"tipo":"produto 1","marca":"produto 1","descricao":"produto 1","ID":1},"quantidade":5}],"ID":2},"nome":"loja1","email":"loja1","senha":"loja1","cpf":"loja1","endereco":"loja1","ID":1}
+{"estoque":{"estoque":[],"ID":1},"nome":"loja2","email":"loja2","senha":"loja2","cpf":"loja2","endereco":"loja2","ID":2}

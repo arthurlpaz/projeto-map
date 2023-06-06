@@ -53,8 +53,8 @@ public class RepositorioComprador implements Repositorio{
 
     public static void inserir(Comprador newComprador){
         listaCompradores.add(newComprador);
-        if(newComprador.getID() > ID){
-            ID = newComprador.getID();
+        if(newComprador.getID() >= ID){
+            ID = newComprador.getID() + 1;
         }
     }
 
@@ -84,6 +84,15 @@ public class RepositorioComprador implements Repositorio{
     public static void removerPorID(int ID) {
         for (int i = 0; i < listaCompradores.size(); i++) {
             if(listaCompradores.get(i).getID() == ID){
+                listaCompradores.remove(i);
+                break;
+            }
+        }
+    }
+
+    public static void removerPorNome(String nome) {
+        for (int i = 0; i < listaCompradores.size(); i++) {
+            if(listaCompradores.get(i).getNome().equals(nome)){
                 listaCompradores.remove(i);
                 break;
             }

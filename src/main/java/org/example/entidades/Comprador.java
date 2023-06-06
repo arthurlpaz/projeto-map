@@ -28,7 +28,11 @@ public class Comprador  extends  Entidades{
                 for(int j = 0; j < carrinho.getProdutosPorLoja().get(i).getListaProdutos().size(); j++){
                     Produto auxProduto = carrinho.getProdutosPorLoja().get(i).getListaProdutos().get(j).getProduto();
                     int auxQuantidade = carrinho.getProdutosPorLoja().get(i).getListaProdutos().get(j).getQuantidade();
+
                     auxLoja.getEstoque().removerPorNome(auxProduto.getNome(), auxQuantidade);
+
+                    carrinho.removerDoCarrinho(carrinho.getProdutosPorLoja().get(i).getLoja(), auxProduto, auxQuantidade);
+                    carrinho.setValorTotal(carrinho.getValorTotal() - (auxProduto.getValor() * auxQuantidade));
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -36,7 +40,12 @@ public class Comprador  extends  Entidades{
         }
     }
 
+
+
     public Carrinho getCarrinho() {
+        if(carrinho == null){
+            carrinho = new Carrinho();
+        }
         return carrinho;
     }
 

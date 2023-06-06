@@ -1,5 +1,7 @@
 package org.example.produto;
 
+import org.example.repositorio.RepositorioLoja;
+
 import java.util.ArrayList;
 
 public class MapLojaProduto {
@@ -45,9 +47,14 @@ public class MapLojaProduto {
         return  total;
     }
 
-    public void inserirProduto(Produto produto, int quantidade){
+    public void inserirProduto(Produto produto, int quantidade) throws Exception{
         for (MapProduto listaProduto : listaProdutos) {
             if (listaProduto.getProduto().equals(produto)) {
+                //verifica se tem produtos suficientes
+                if(RepositorioLoja.getLojaPorNome(this.loja).getEstoque().getProdutoPorNome(produto.getNome()).getQuantidade() < quantidade + listaProduto.getQuantidade()){
+                    throw new Exception("Não há produtos suficientes no estoque");
+                }
+                //se tiver produtos suficientes ele coloca no carrinho
                 listaProduto.setQuantidade(listaProduto.getQuantidade() + quantidade);
                 return;
             }
@@ -63,7 +70,7 @@ public class MapLojaProduto {
                 }else if (listaProdutos.get(i).getQuantidade() == quantidade){
                     listaProdutos.remove(i);
                 }else {
-                    throw new Exception("quantidade não é suficiente");
+                    throw new Exception("não há tantos produtos no carrinho");
                 }
                 return;
             }

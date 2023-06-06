@@ -52,7 +52,11 @@ public class Fachada {
 
         MenuDeslogado.initialPage();
 
-        escolha = sc.nextInt();
+        try{
+            escolha = sc.nextInt();
+        }catch ( Exception e){
+            escolha = 0;
+        }
         sc.nextLine();
 
         switch (escolha) {
@@ -60,7 +64,7 @@ public class Fachada {
             case 1 -> {
                 try {
                     String tipoUsuario;
-                    System.out.println("Digite o tipo de usuario que quer cadastrar");
+                    System.out.println("Digite o tipo de usuario que quer cadastrar (comprador / loja)");
                     tipoUsuario = sc.nextLine();
                     MenuDeslogado.registerPage(tipoUsuario);
                 }
@@ -81,7 +85,16 @@ public class Fachada {
             //excluir usuario
             case 3 -> {
                 try{
-                    MenuDeslogado.deletePage();
+                    String tipoUsuario;
+                    String nomeUsuario;
+
+                    System.out.println("Digite o tipo de usuario que quer excluir?");
+                    tipoUsuario = sc.nextLine();
+
+                    System.out.println("Digite o nome dd usuario que quer excluir");
+                    nomeUsuario = sc.nextLine();
+
+                    MenuDeslogado.deletePage(tipoUsuario, nomeUsuario);
                 }catch (Exception exception){
                     System.out.println("Algum dos dados fornecidos não é válido");
                 }
@@ -104,7 +117,11 @@ public class Fachada {
 
         MenuComprador.initialPage();
 
-        escolha = sc.nextInt();
+        try{
+            escolha = sc.nextInt();
+        }catch ( Exception e){
+            escolha = 0;
+        }
         sc.nextLine();
 
         switch (escolha) {
@@ -123,13 +140,83 @@ public class Fachada {
                     Loja auxLoja = RepositorioLoja.getLojaPorNome(nomeLoja);
                     auxLoja.getEstoque().listarProdutos();
                 }catch (Exception e){
-                    e.printStackTrace();
+                                        System.out.println(e);
+;
                 }
             }
 
             //mostra todos os produtos de todas as lojas cadastradas
             case 3 -> {
                 RepositorioLoja.listarTodosOsProdutos();
+            }
+
+            //ver itens do carrinho
+            case 4 -> {
+                try{
+                    RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).getCarrinho().listarItemsCarrinho();
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+            }
+
+            //adiciona produtos no carrinho
+            case 5 -> {
+                String nomeLoja;
+                String nomeProduto;
+                int quantidade;
+
+                try{
+
+                    System.out.println("digite o nome da loja que possui o produto que vc deseja");
+                    nomeLoja = sc.nextLine();
+
+                    System.out.println("digite o nome do produto que vc deseja");
+                    nomeProduto = sc.nextLine();
+
+                    System.out.println("digite a quantidade do produto que vc deseja");
+                    quantidade = sc.nextInt();
+                    sc.nextLine();
+
+                    Produto produto = RepositorioLoja.getLojaPorNome(nomeLoja).getEstoque().getProdutoPorNome(nomeProduto).getProduto();
+                    RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).getCarrinho().inserirNoCarrinho(nomeLoja, produto, quantidade);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+            }
+
+            //remove produtos do carrinho
+            case 6 -> {
+                String nomeLoja;
+                String nomeProduto;
+                int quantidade;
+
+                try{
+
+                    System.out.println("digite o nome da loja que possui o produto que vc deseja");
+                    nomeLoja = sc.nextLine();
+
+                    System.out.println("digite o nome do produto que vc deseja");
+                    nomeProduto = sc.nextLine();
+
+                    System.out.println("digite a quantidade do produto que vc deseja");
+                    quantidade = sc.nextInt();
+                    sc.nextLine();
+
+                    Produto produto = RepositorioLoja.getLojaPorNome(nomeLoja).getEstoque().getProdutoPorNome(nomeProduto).getProduto();
+                    RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).getCarrinho().removerDoCarrinho(nomeLoja, produto, quantidade);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+            }
+
+            //finaliza compra
+            case 7 -> {
+                try {
+                    RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).finalizarCompras();
+                    System.out.println("compra finalizada");
+                }catch (Exception e){
+                    System.out.println(e);
+                }
             }
 
             //desloga do aplicativo
@@ -160,7 +247,11 @@ public class Fachada {
 
         MenuLoja.initialPage();
 
-        escolha = sc.nextInt();
+        try{
+            escolha = sc.nextInt();
+        }catch ( Exception e){
+            escolha = 0;
+        }
         sc.nextLine();
 
         switch (escolha) {

@@ -53,10 +53,6 @@ public class RepositorioLoja {
         }
         throw new Exception("Usuario nao encontrado");
     }
-//    public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque, ArrayList<Pedido> historicoPedidos) {
-//        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque, historicoPedidos));
-//        ID++;
-//    }
     public static void inserir(String nome, String email, String senha, String cpf, String endereco, Estoque estoque) throws Exception {
         for (Loja loja : listaLojas) {
             if(loja.getNome().equals(nome)){
@@ -74,8 +70,8 @@ public class RepositorioLoja {
     }
     public static void inserir(Loja newLoja){
         listaLojas.add(newLoja);
-        if(newLoja.getID() > ID){
-            ID = newLoja.getID();
+        if(newLoja.getID() >= ID){
+            ID = newLoja.getID() + 1;
         }
     }
 
@@ -95,6 +91,15 @@ public class RepositorioLoja {
             }
         }
     }
+    public static void removerPorNome(String nome) {
+        for (int i = 0; i < listaLojas.size(); i++) {
+            if(listaLojas.get(i).getNome().equals(nome)){
+                listaLojas.remove(i);
+                break;
+            }
+        }
+    }
+
     public static void listarLojas(){
         for (Loja loja : listaLojas) {
             System.out.println(loja);
