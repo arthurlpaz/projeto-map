@@ -33,7 +33,7 @@ public class Comprador  extends  Entidades{
                     auxLoja.getEstoque().removerPorNome(auxProduto.getNome(), auxQuantidade);
 
                     carrinho.removerDoCarrinho(carrinho.getProdutosPorLoja().get(0).getLoja(), auxProduto, auxQuantidade);
-                    carrinho.setValorTotal(carrinho.getValorTotal() - (auxProduto.getValor() * auxQuantidade));
+                    i--;
                 }
             }catch (Exception e){
                 System.out.println(e);
