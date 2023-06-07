@@ -45,8 +45,8 @@ public class EstoqueTest extends TestCase {
         String consoleOutput = outputStream.toString();
 
         // Verifica a saída do console com o resultado esperado
-        String expectedOutput = "nome do produto -> Produto 1 | ID -> 1 | valor -> 10.0 | quantidade -> 10\n" +
-                                "nome do produto -> Produto 2 | ID -> 2 | valor -> 20.0 | quantidade -> 20\n";
+        String expectedOutput = "nome do produto -> Produto 1 | ID -> 1 | valor -> 10.0 | quantidade -> 10\r\n" +
+                                "nome do produto -> Produto 2 | ID -> 2 | valor -> 20.0 | quantidade -> 20\r\n";
         System.out.println(expectedOutput);
 
         System.out.println(consoleOutput);
@@ -107,46 +107,46 @@ public class EstoqueTest extends TestCase {
         assertEquals(1, estoqueAtual.size());
     }
 
-//    @Test
-//    public void testSetEstoque() {
-//        ArrayList<MapProduto> novoEstoque = new ArrayList<>();
-//
-//        novoEstoque.add(new MapProduto(new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1), 10));
-//        novoEstoque.add(new MapProduto(new Produto("Produto 2", 20.0, "Tipo 2", "Marca 2", "Descrição 2", 2), 20) );
-//
-//        estoque.setEstoque(novoEstoque);
-//
-//        ArrayList<MapProduto> estoqueAtual = estoque.getEstoque();
-//        assertEquals(2, estoqueAtual.size());
-//
-//        MapProduto produto1 = estoqueAtual.get(0);
-//        assertEquals("Produto 1", produto1.getProduto().getNome());
-//        assertEquals(10.0, produto1.getProduto().getValor());
-//        assertEquals("Tipo 1", produto1.getProduto().getTipo());
-//        assertEquals("Marca 1", produto1.getProduto().getMarca());
-//        assertEquals("Descrição 1", produto1.getProduto().getDescricao());
-//
-//        MapProduto produto2 = estoqueAtual.get(1);
-//        assertEquals("Produto 2", produto2.getProduto().getNome());
-//        assertEquals(20.0, produto2.getProduto().getValor());
-//        assertEquals("Tipo 2", produto2.getProduto().getTipo());
-//        assertEquals("Marca 2", produto2.getProduto().getMarca());
-//        assertEquals("Descrição 2", produto2.getProduto().getDescricao());
-//
-//        //remover itens do estoque, reiniciando repositorio para proximos testes
-//        try{
-//            estoque.removerPorID(1, 10);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//        try{
-//            estoque.removerPorID(2, 20);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//    }
+    @Test
+    public void testSetEstoque() {
+        ArrayList<MapProduto> novoEstoque = new ArrayList<>();
+
+        novoEstoque.add(new MapProduto(new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1), 10));
+        novoEstoque.add(new MapProduto(new Produto("Produto 2", 20.0, "Tipo 2", "Marca 2", "Descrição 2", 2), 20) );
+
+        estoque.setEstoque(novoEstoque);
+
+        ArrayList<MapProduto> estoqueAtual = estoque.getEstoque();
+        assertEquals(2, estoqueAtual.size());
+
+        MapProduto produto1 = estoqueAtual.get(0);
+        assertEquals("Produto 1", produto1.getProduto().getNome());
+        assertEquals(10.0, produto1.getProduto().getValor());
+        assertEquals("Tipo 1", produto1.getProduto().getTipo());
+        assertEquals("Marca 1", produto1.getProduto().getMarca());
+        assertEquals("Descrição 1", produto1.getProduto().getDescricao());
+
+        MapProduto produto2 = estoqueAtual.get(1);
+        assertEquals("Produto 2", produto2.getProduto().getNome());
+        assertEquals(20.0, produto2.getProduto().getValor());
+        assertEquals("Tipo 2", produto2.getProduto().getTipo());
+        assertEquals("Marca 2", produto2.getProduto().getMarca());
+        assertEquals("Descrição 2", produto2.getProduto().getDescricao());
+
+        //remover itens do estoque, reiniciando repositorio para proximos testes
+        try{
+            estoque.removerPorID(1, 10);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            estoque.removerPorID(2, 20);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     @Test
     public void testListarProdutos() {
@@ -201,6 +201,17 @@ public class EstoqueTest extends TestCase {
         }
     }
 
+    @Test
+    public void testGetProdutoPorNome() throws Exception {
+        estoque.inserir("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 5);
+        estoque.inserir("Produto 2", 20.0, "Tipo 2", "Marca 2", "Descrição 2", 10);
 
-
+        MapProduto produto = estoque.getProdutoPorNome("Produto 1");
+        Assert.assertEquals("Produto 1", produto.getProduto().getNome());
+        Assert.assertEquals(10.0, produto.getProduto().getValor(), 0.01);
+        Assert.assertEquals("Tipo 1", produto.getProduto().getTipo());
+        Assert.assertEquals("Marca 1", produto.getProduto().getMarca());
+        Assert.assertEquals("Descrição 1", produto.getProduto().getDescricao());
+        Assert.assertEquals(5, produto.getQuantidade());
+    }
 }
