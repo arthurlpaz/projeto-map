@@ -6,7 +6,7 @@ import org.example.repositorio.RepositorioLoja;
 
 import java.util.ArrayList;
 
-public class Comprador  extends  Entidades{
+public class Comprador extends Entidades{
     Carrinho carrinho;
     public Comprador(String nome, String email, String senha, String cpf, String endereco, int ID) {
         super(nome, email, senha, cpf, endereco, ID);
@@ -33,7 +33,7 @@ public class Comprador  extends  Entidades{
                     auxLoja.getEstoque().removerPorNome(auxProduto.getNome(), auxQuantidade);
 
                     carrinho.removerDoCarrinho(carrinho.getProdutosPorLoja().get(0).getLoja(), auxProduto, auxQuantidade);
-                    carrinho.setValorTotal(carrinho.getValorTotal() - (auxProduto.getValor() * auxQuantidade));
+                    i--;
                 }
             }catch (Exception e){
                 System.out.println(e);

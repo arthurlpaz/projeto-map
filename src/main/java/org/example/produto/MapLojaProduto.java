@@ -1,5 +1,6 @@
 package org.example.produto;
 
+import org.example.entidades.Loja;
 import org.example.repositorio.RepositorioLoja;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MapLojaProduto {
         this.listaProdutos = listaProdutos;
     }
 
+    //calcula valor total dos produtos
     public double calculaTotalLoja(){
         double total = 0;
 
@@ -48,11 +50,14 @@ public class MapLojaProduto {
         return  total;
     }
 
+    //insere novos produtos
     public void inserirProduto(Produto produto, int quantidade) throws Exception{
         for (MapProduto listaProduto : listaProdutos) {
+            //verifica se o produto que o produto ja está no map
             if (listaProduto.getProduto().equals(produto)) {
                 //verifica se tem produtos suficientes
-                if(RepositorioLoja.getLojaPorNome(this.loja).getEstoque().getProdutoPorNome(produto.getNome()).getQuantidade() < quantidade + listaProduto.getQuantidade()){
+                Loja auxLoja = RepositorioLoja.getLojaPorNome(this.loja);
+                if(auxLoja.getEstoque().getProdutoPorNome(produto.getNome()).getQuantidade() < quantidade + listaProduto.getQuantidade()){
                     throw new Exception("Não há produtos suficientes no estoque");
                 }
                 //se tiver produtos suficientes ele coloca no carrinho
@@ -60,8 +65,10 @@ public class MapLojaProduto {
                 return;
             }
         }
+        //adiciona caso não estiver no map
         listaProdutos.add(new MapProduto(produto, quantidade));
     }
+
 
     public void removerProduto(String produto, int quantidade) throws Exception{
         for (int i = 0 ; i < listaProdutos.size(); i++) {

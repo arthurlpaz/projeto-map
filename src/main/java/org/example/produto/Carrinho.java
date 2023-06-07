@@ -38,9 +38,10 @@ public class Carrinho {
 
     public void removerDoCarrinho(String loja, Produto produto, int quantidade) throws Exception{
         for (int i = 0; i < produtosPorLoja.size(); i++) {
+            //procura loja informada
             if(produtosPorLoja.get(i).getLoja().equals(loja)){
                 produtosPorLoja.get(i).removerProduto(produto.getNome(), quantidade);
-                System.out.println("total = " + calculaValorTotal());
+                valorTotal = calculaValorTotal();
                 if(produtosPorLoja.get(i).getListaProdutos().size() == 0){
                     produtosPorLoja.remove(i);
                     return;
@@ -48,7 +49,6 @@ public class Carrinho {
                 return;
             }
         }
-
         throw new Exception("Nenhum produto da loja encontrada no carrinho");
     }
 
@@ -56,12 +56,14 @@ public class Carrinho {
         double total = 0;
 
         for (MapLojaProduto produto : produtosPorLoja) {
-            total += (produto.getTotalLoja());
+            total += (produto.calculaTotalLoja());
         }
 
+        System.out.println("total = " + total);
         return total;
     }
 
+    //mostra itens do carrinho separados por loja
     public void listarItemsCarrinho() throws Exception{
         if (produtosPorLoja.size() == 0){
             throw new Exception("O usuario nao possui nenhum item no carrinho");
