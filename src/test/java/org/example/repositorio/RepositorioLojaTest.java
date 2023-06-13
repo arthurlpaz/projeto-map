@@ -12,17 +12,25 @@ import java.util.ArrayList;
 
 public class RepositorioLojaTest extends TestCase {
     private RepositorioLoja repositorio;
+    private Loja loja1;
+    private Loja loja2;
 
     @Before
-    public void setUp(){ repositorio = RepositorioLoja.getInstancia(); }
+    public void setUp(){
+        repositorio = RepositorioLoja.getInstancia();
+        loja1 = new Loja("Loja 1", "loja1@example.com", "senha123", "12345678900", "Rua 1", 1, new Estoque());
+        loja2 = new Loja("Loja 2", "loja2@example.com", "senha456", "98765432100", "Rua 2", 2, new Estoque());
+        repositorio.inserir(loja1);
+        repositorio.inserir(loja2);
+    }
 
     @Test
     public void testInserirLoja() throws Exception {
         Estoque estoque = new Estoque();
-        String nome = "Loja A";
+        String nome = "Loja Teste";
         String email = "loja@example.com";
         String senha = "senha123";
-        String cpf = "12345678900";
+        String cpf = "12341234121";
         String endereco = "Rua A";
 
         repositorio.inserir(nome, email, senha, cpf, endereco, estoque);
@@ -63,7 +71,7 @@ public class RepositorioLojaTest extends TestCase {
         String nome = "Loja B";
         String email = "loja@example.com";
         String senha = "senha456";
-        String cpf = "98765432100";
+        String cpf = "32132132132";
         String endereco = "Rua A";
         Estoque estoque = new Estoque();
 
@@ -144,4 +152,6 @@ public class RepositorioLojaTest extends TestCase {
 
         repositorioLoja.listarTodosOsProdutos();
     }
+
 }
+
