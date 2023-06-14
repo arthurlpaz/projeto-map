@@ -9,7 +9,7 @@ public class MenuComprador {
         System.out.println("4 - visualizar produtos do carrinho");
         System.out.println("5 - adicionar produtos ao carrinho");
         System.out.println("6 - remover produtos do carrinho");
-//        System.out.println("7 - finalizar compra com itens do carrinho");
+        System.out.println("7 - finalizar compra com itens do carrinho");
         System.out.println("8 - Fazer logout");
         System.out.println("9 - Fechar sistema");
     }
