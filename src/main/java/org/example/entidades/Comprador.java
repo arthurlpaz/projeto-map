@@ -25,30 +25,30 @@ public class Comprador extends Entidades{
         if(carrinho.getProdutosPorLoja().size() == 0){
             throw new Exception("O carrinho está vazio");
         }
-        for (int i = 0; i < carrinho.getProdutosPorLoja().size(); i++) {
+
+        while(carrinho.getProdutosPorLoja().size() != 0){
             try{
                 Loja auxLoja = RepositorioLoja.getLojaPorNome(carrinho.getProdutosPorLoja().get(0).getLoja());
-
                 ArrayList<MapProduto> produtos = new ArrayList<>();
 
-                for(int j = 0; j < carrinho.getProdutosPorLoja().get(0).getListaProdutos().size(); j++){
-                    Produto auxProduto = carrinho.getProdutosPorLoja().get(0).getListaProdutos().get(j).getProduto();
-                    int auxQuantidade = carrinho.getProdutosPorLoja().get(0).getListaProdutos().get(j).getQuantidade();
-
+                while(carrinho.getProdutosPorLoja().size() != 0 && carrinho.getProdutosPorLoja().get(0).getListaProdutos().size() != 0 && carrinho.getProdutosPorLoja().get(0).getLoja().equals(auxLoja.getNome())){
+                    Produto auxProduto = carrinho.getProdutosPorLoja().get(0).getListaProdutos().get(0).getProduto();
+                    int auxQuantidade = carrinho.getProdutosPorLoja().get(0).getListaProdutos().get(0).getQuantidade();
 
                     auxLoja.getEstoque().removerPorNome(auxProduto.getNome(), auxQuantidade);
-                    produtos.add(carrinho.getProdutosPorLoja().get(0).getListaProdutos().get(j));
+                    produtos.add(carrinho.getProdutosPorLoja().get(0).getListaProdutos().get(0));
 
                     carrinho.removerDoCarrinho(carrinho.getProdutosPorLoja().get(0).getLoja(), auxProduto, auxQuantidade);
-                    i--;
                 }
-                auxLoja.getHistoricoDeVendas().add(new Pedidos(produtos, auxLoja.getNome(), this.getNome()));
-                this.getHistoricoDeCompras().add(new Pedidos(produtos, auxLoja.getNome(), this.getNome()));
+
+                auxLoja.getHistoricoDeVendas().add(new Pedidos(produtos, this.getNome(), auxLoja.getNome()));
+                this.getHistoricoDeCompras().add(new Pedidos(produtos, this.getNome(), auxLoja.getNome()));
 
             }catch (Exception e){
                 System.out.println(e);
             }
         }
+
     }
 
 
@@ -65,6 +65,9 @@ public class Comprador extends Entidades{
     }
 
     public ArrayList<Pedidos> getHistoricoDeCompras() {
+        if(historicoDeCompras == null){
+            historicoDeCompras = new ArrayList<>();
+        }
         return historicoDeCompras;
     }
 

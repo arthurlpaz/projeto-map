@@ -5,7 +5,7 @@ import org.example.produto.Pedidos;
 
 import java.util.ArrayList;
 
-public class Loja  extends  Entidades{
+public class Loja  extends  Entidades {
     private Estoque estoque;
     ArrayList<Pedidos> historicoDeVendas;
 
@@ -22,7 +22,7 @@ public class Loja  extends  Entidades{
     }
 
     public Estoque getEstoque() {
-        if(estoque == null){
+        if (estoque == null) {
             estoque = new Estoque();
         }
         return estoque;
@@ -33,6 +33,9 @@ public class Loja  extends  Entidades{
     }
 
     public ArrayList<Pedidos> getHistoricoDeVendas() {
+        if (historicoDeVendas == null) {
+            historicoDeVendas = new ArrayList<>();
+        }
         return historicoDeVendas;
     }
 

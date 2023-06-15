@@ -13,6 +13,7 @@ public class Pedidos {
         this.nomeUsuario = "";
         this.nomeLoja = "";
     }
+    
     public Pedidos(ArrayList<MapProduto> produtos, String nomeUsuario, String nomeLoja) {
         this.produtos = produtos;
         this.nomeUsuario = nomeUsuario;
