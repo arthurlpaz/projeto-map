@@ -22,7 +22,7 @@ public class Fachada {
         DatabaseService.readDatabaseLojas();
 
         int escolha = 0;
-        while(escolha != 9){
+        while(escolha != 10){
             if(AuthService.isLogged()){
                 try{
                     if(AuthService.tipoUsuario().equals("org.example.entidades.Comprador")){
@@ -101,7 +101,7 @@ public class Fachada {
             }
 
             //fecha a aplicação
-            case 9 -> {
+            case 10 -> {
                 System.out.println("fechando sistema!");
             }
 
@@ -219,12 +219,21 @@ public class Fachada {
                 }
             }
 
-            //desloga do aplicativo
+            //Imprimir historico de compras
             case 8 -> {
+                try {
+                    RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).imprimirCompras();
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+            }
+
+            //desloga do aplicativo
+            case 9 -> {
                 AuthService.logout();
             }
             //fecha o aplicativo
-            case 9 -> {
+            case 10 -> {
                 System.out.println("fechando sistema!");
             }
 
@@ -273,13 +282,17 @@ public class Fachada {
             case 4 -> {
                 MenuLoja.atualizarDadosDoProduto(lojaLogada);
             }
+            //atualizar dados de produtos do estoque
+            case 5 -> {
+                lojaLogada.imprimirVendas();
+            }
 
             //desloga do aplicativo
-            case 8 -> {
+            case 9 -> {
                 AuthService.logout();
             }
             //fecha o aplicativo
-            case 9 -> {
+            case 10 -> {
                 System.out.println("fechando sistema!");
             }
 

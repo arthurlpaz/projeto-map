@@ -12,8 +12,9 @@ public class MenuLoja {
         System.out.println("2 - adicionar produtos ao estoque");
         System.out.println("3 - remover produtos do estoque");
         System.out.println("4 - atualizar dados de produtos");
-        System.out.println("8 - Fazer logout");
-        System.out.println("9 - Fechar sistema");
+        System.out.println("5 - Visualizar histórico de compras");
+        System.out.println("9 - Fazer logout");
+        System.out.println("10 - Fechar sistema");
     }
 
     public static void inserirProdutoNoEstoque(org.example.entidades.Loja lojaLogada) throws Exception {

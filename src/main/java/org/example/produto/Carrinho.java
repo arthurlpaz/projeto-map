@@ -58,8 +58,6 @@ public class Carrinho {
         for (MapLojaProduto produto : produtosPorLoja) {
             total += (produto.calculaTotalLoja());
         }
-
-        System.out.println("total = " + total);
         return total;
     }
 

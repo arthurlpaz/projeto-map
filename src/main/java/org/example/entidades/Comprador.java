@@ -51,7 +51,14 @@ public class Comprador extends Entidades{
 
     }
 
-
+    public void imprimirCompras(){
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("HISTORICO DE COMPRAS:");
+        for (int i = 0; i < this.historicoDeCompras.size(); i++) {
+            this.historicoDeCompras.get(i).imprimirPedidos();
+        }
+        System.out.println("--------------------------------------------------------------");
+    }
 
     public Carrinho getCarrinho() {
         if(carrinho == null){

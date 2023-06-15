@@ -21,6 +21,15 @@ public class Loja  extends  Entidades {
         this.historicoDeVendas = historicoDeVendas;
     }
 
+    public void imprimirVendas(){
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("HISTORICO DE VENDAS:");
+        for (int i = 0; i < this.historicoDeVendas.size(); i++) {
+            this.historicoDeVendas.get(i).imprimirPedidos();
+        }
+        System.out.println("--------------------------------------------------------------");
+    }
+
     public Estoque getEstoque() {
         if (estoque == null) {
             estoque = new Estoque();

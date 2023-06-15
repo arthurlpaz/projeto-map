@@ -12,7 +12,7 @@ public class MenuDeslogado {
         System.out.println("1 - Fazer cadastro no sistema");
         System.out.println("2 - Fazer login");
         System.out.println("3 - Excluir usuario");
-        System.out.println("9 - Fechar sistema");
+        System.out.println("10 - Fechar sistema");
     }
 
     public static void registerPage(String tipoUsuario) throws Exception {

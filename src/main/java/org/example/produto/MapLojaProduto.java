@@ -45,8 +45,6 @@ public class MapLojaProduto {
         for (MapProduto listaProduto : listaProdutos) {
             total += listaProduto.getProduto().getValor() * listaProduto.getQuantidade();
         }
-
-        System.out.println(total);
         return  total;
     }
 

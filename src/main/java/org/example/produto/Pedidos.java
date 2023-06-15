@@ -19,7 +19,13 @@ public class Pedidos {
         this.nomeUsuario = nomeUsuario;
         this.nomeLoja = nomeLoja;
     }
-
+    public void imprimirPedidos(){
+        System.out.println("Loja: " + this.nomeLoja);
+        System.out.println("Usuario: " + this.nomeUsuario);
+        for (int i = 0; i < produtos.size(); i++) {
+            System.out.println(produtos.get(i));
+        }
+    }
     public ArrayList<MapProduto> getProdutos() {
         return produtos;
     }
