@@ -2,19 +2,36 @@ package org.example.entidades;
 
 import junit.framework.TestCase;
 import org.example.produto.Estoque;
+import org.example.produto.Pedidos;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class LojaTest extends TestCase {
 
     private Loja loja;
     private Estoque estoque;
+    private ArrayList<Pedidos> historicoVendas;
     @Before
     public void setUp() {
         estoque = new Estoque();
-        loja = new Loja("Minha Loja", "loja@example.com", "senha123", "123456789", "Rua Principal", 1, estoque);
+        historicoVendas = new ArrayList<>();
+
+        loja = new Loja("Minha Loja", "loja@example.com", "senha123", "123456789", "Rua Principal", 1, estoque, historicoVendas);
     }
 
+    @Test
+    public void testConstructorComHistoricoDeVendas() {
+        assertEquals("Minha Loja", loja.getNome());
+        assertEquals("loja@example.com", loja.getEmail());
+        assertEquals("senha123", loja.getSenha());
+        assertEquals("123456789", loja.getCpf());
+        assertEquals("Rua Principal", loja.getEndereco());
+        assertEquals(1, loja.getID());
+        assertEquals(estoque, loja.getEstoque());
+        assertEquals(historicoVendas, loja.getHistoricoDeVendas());
+    }
     @Test
     public void testGetNome() {
         String nome = loja.getNome();
@@ -112,6 +129,37 @@ public class LojaTest extends TestCase {
         String stringEsperada = "nome -> Minha Loja | email -> loja@example.com | endereco -> Rua Principal | ID -> 1";
         String stringAtual = loja.toString();
         assertEquals(stringEsperada, stringAtual);
+    }
+
+    @Test
+    public void testGetHistoricoDeVendas_QuandoForNull() {
+        ArrayList<Pedidos> historico = loja.getHistoricoDeVendas();
+
+        assertNotNull(historico);
+        assertTrue(historico.isEmpty());
+    }
+
+    @Test
+    public void testGetHistoricoDeVendas_QuandoNaoForNull() {
+        ArrayList<Pedidos> historicoExistente = new ArrayList<>();
+        historicoExistente.add(new Pedidos());
+        loja.setHistoricoDeVendas(historicoExistente);
+
+        ArrayList<Pedidos> historico = loja.getHistoricoDeVendas();
+
+        assertEquals(historicoExistente, historico);
+    }
+
+    @Test
+    public void testSetHistoricoDeVendas() {
+        ArrayList<Pedidos> historico = new ArrayList<>();
+        historico.add(new Pedidos());
+        historico.add(new Pedidos());
+
+        loja.setHistoricoDeVendas(historico);
+
+        ArrayList<Pedidos> historicoRetornado = loja.getHistoricoDeVendas();
+        assertEquals(historico, historicoRetornado);
     }
 
 }
