@@ -11,7 +11,9 @@ public class MenuComprador {
         System.out.println("6 - remover produtos do carrinho");
         System.out.println("7 - finalizar compra com itens do carrinho");
         System.out.println("8 - Visualizar histórico de compras");
-        System.out.println("9 - Fazer logout");
-        System.out.println("10 - Fechar sistema");
+        System.out.println("9 - visualizar comentarios");        
+        System.out.println("10 - avaliar pedidos");
+        System.out.println("11 - Fazer logout");        
+        System.out.println("12 - Fechar sistema");
     }
 }

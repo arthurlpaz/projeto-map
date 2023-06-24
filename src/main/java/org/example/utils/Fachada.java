@@ -1,5 +1,6 @@
 package org.example.utils;
 
+import org.example.entidades.Comprador;
 import org.example.entidades.Loja;
 import org.example.services.AuthService;
 import org.example.services.DatabaseService;
@@ -22,7 +23,7 @@ public class Fachada {
         DatabaseService.readDatabaseLojas();
 
         int escolha = 0;
-        while(escolha != 10){
+        while(escolha != 12){
             if(AuthService.isLogged()){
                 try{
                     if(AuthService.tipoUsuario().equals("org.example.entidades.Comprador")){
@@ -101,7 +102,7 @@ public class Fachada {
             }
 
             //fecha a aplicação
-            case 10 -> {
+            case 12 -> {
                 System.out.println("fechando sistema!");
             }
 
@@ -140,8 +141,7 @@ public class Fachada {
                     Loja auxLoja = RepositorioLoja.getLojaPorNome(nomeLoja);
                     auxLoja.getEstoque().listarProdutos();
                 }catch (Exception e){
-                                        System.out.println(e);
-;
+                    System.out.println(e);
                 }
             }
 
@@ -228,12 +228,25 @@ public class Fachada {
                 }
             }
 
+/*
+        System.out.println("9 - visualizar comentarios");        
+        System.out.println("10 - avaliar pedidos");
+*/
+            //avaliar pedidos
+            case 10 -> {
+                try {
+                  RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).avaliarPedidos();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+
             //desloga do aplicativo
-            case 9 -> {
+            case 11 -> {
                 AuthService.logout();
             }
             //fecha o aplicativo
-            case 10 -> {
+            case 12 -> {
                 System.out.println("fechando sistema!");
             }
 
@@ -287,12 +300,30 @@ public class Fachada {
                 lojaLogada.imprimirVendas();
             }
 
+            //visualizar comentarios feitos sobre a loja
+            case 6 -> {
+                lojaLogada.imprimeComentarios();
+            }
+
+            //avaliar pedidos
+            case 7 -> {
+                try {
+                  lojaLogada.avaliarPedidos();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+
+            //ver avaliacao geral da loja
+            case 8 -> {
+                System.out.println("A loja é avaliada como: " + lojaLogada.getConceito());
+            }
             //desloga do aplicativo
-            case 9 -> {
+            case 11 -> {
                 AuthService.logout();
             }
             //fecha o aplicativo
-            case 10 -> {
+            case 12 -> {
                 System.out.println("fechando sistema!");
             }
 

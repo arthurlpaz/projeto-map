@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.example.produto.*;
+import org.example.utils.Avaliacao;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class CompradorTest {
         // Adiciona um pedido ao histórico de compras
         ArrayList<MapProduto> produtos = new ArrayList<>();
         produtos.add(new MapProduto(new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1), 2));
-        Pedidos pedido = new Pedidos(produtos, comprador.getNome(), "Loja A");
+        Pedidos pedido = new Pedidos(produtos, comprador.getNome(), "Loja A", false);
         comprador.getHistoricoDeCompras().add(pedido);
 
         // Verifica se o histórico de compras contém o pedido adicionado
@@ -55,7 +56,7 @@ public class CompradorTest {
         ArrayList<Pedidos> novoHistorico = new ArrayList<>();
         ArrayList<MapProduto> produtos = new ArrayList<>();
         produtos.add(new MapProduto(new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1), 2));
-        Pedidos pedido = new Pedidos(produtos, comprador.getNome(), "Loja A");
+        Pedidos pedido = new Pedidos(produtos, comprador.getNome(), "Loja A", false);
         novoHistorico.add(pedido);
 
         // Define o novo histórico de compras
@@ -92,7 +93,7 @@ public class CompradorTest {
         produtosPedido1.add(new MapProduto(new Produto("Produto 2", 20.0, "Tipo 2", "Marca 2", "Descrição 2", 2), 2));
         String nomeUsuarioPedido1 = "User 1";
         String nomeLojaPedido1 = "Loja 1";
-        Pedidos pedido1 = new Pedidos(produtosPedido1, nomeUsuarioPedido1, nomeLojaPedido1);
+        Pedidos pedido1 = new Pedidos(produtosPedido1, nomeUsuarioPedido1, nomeLojaPedido1, false);
         historicoDeCompras.add(pedido1);
 
         // Dados do pedido 2
@@ -101,7 +102,7 @@ public class CompradorTest {
         produtosPedido2.add(new MapProduto(new Produto("Produto 4", 40.0, "Tipo 4", "Marca 4", "Descrição 4", 4), 4));
         String nomeUsuarioPedido2 = "User 2";
         String nomeLojaPedido2 = "Loja 2";
-        Pedidos pedido2 = new Pedidos(produtosPedido2, nomeUsuarioPedido2, nomeLojaPedido2);
+        Pedidos pedido2 = new Pedidos(produtosPedido2, nomeUsuarioPedido2, nomeLojaPedido2, false);
         historicoDeCompras.add(pedido2);
 
         // Dados do pedido 3
@@ -110,7 +111,7 @@ public class CompradorTest {
         produtosPedido3.add(new MapProduto(new Produto("Produto 6", 60.0, "Tipo 6", "Marca 6", "Descrição 6", 6), 6));
         String nomeUsuarioPedido3 = "User 3";
         String nomeLojaPedido3 = "Loja 3";
-        Pedidos pedido3 = new Pedidos(produtosPedido3, nomeUsuarioPedido3, nomeLojaPedido3);
+        Pedidos pedido3 = new Pedidos(produtosPedido3, nomeUsuarioPedido3, nomeLojaPedido3, false);
         historicoDeCompras.add(pedido3);
 
         comprador.setHistoricoDeCompras(historicoDeCompras);
@@ -157,10 +158,12 @@ public class CompradorTest {
         String endereco = "123";
         int ID = 1;
         Carrinho carrinho = new Carrinho();
-        ArrayList<Pedidos> historicoDeCompras = new ArrayList<>();
+        ArrayList<Pedidos> historicoDeCompras = new ArrayList<>();        
+        ArrayList<Avaliacao> avaliacoes = new ArrayList<>();
+
 
         // Criação do objeto Comprador
-        Comprador comprador = new Comprador(nome, email, senha, cpf, endereco, ID, carrinho, historicoDeCompras);
+        Comprador comprador = new Comprador(nome, email, senha, cpf, endereco, ID, avaliacoes, carrinho, historicoDeCompras);
 
         // Verificação dos atributos
         Assert.assertEquals(nome, comprador.getNome());

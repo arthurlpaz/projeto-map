@@ -1,7 +1,5 @@
 package org.example.produto;
 
-import org.example.repositorio.RepositorioLoja;
-
 import java.util.ArrayList;
 
 public class Carrinho {

@@ -76,7 +76,7 @@ public class PedidosTest {
         produtos.add(produto2);
 
         // Cria um novo objeto Pedidos utilizando o construtor
-        Pedidos pedidos = new Pedidos(produtos, "Arthur", "Loja Arthur");
+        Pedidos pedidos = new Pedidos(produtos, "Arthur", "Loja Arthur", false);
 
         // Verifica se os atributos foram inicializados corretamente
         assertEquals(produtos, pedidos.getProdutos());

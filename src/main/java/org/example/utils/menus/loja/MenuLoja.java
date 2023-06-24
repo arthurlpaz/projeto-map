@@ -1,7 +1,6 @@
 package org.example.utils.menus.loja;
 
 import org.example.entidades.Loja;
-import org.example.repositorio.RepositorioLoja;
 
 import java.util.Scanner;
 
@@ -13,8 +12,11 @@ public class MenuLoja {
         System.out.println("3 - remover produtos do estoque");
         System.out.println("4 - atualizar dados de produtos");
         System.out.println("5 - Visualizar histórico de compras");
-        System.out.println("9 - Fazer logout");
-        System.out.println("10 - Fechar sistema");
+        System.out.println("6 - visualizar comentarios");        
+        System.out.println("7 - avaliar pedidos");        
+        System.out.println("8 - ver avaliacao geral da loja");
+        System.out.println("11 - Fazer logout");
+        System.out.println("12 - Fechar sistema");
     }
 
     public static void inserirProdutoNoEstoque(org.example.entidades.Loja lojaLogada) throws Exception {

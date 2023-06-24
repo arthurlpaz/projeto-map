@@ -1,7 +1,5 @@
 package org.example.repositorio;
 
-import org.example.entidades.Comprador;
-import org.example.entidades.Entidades;
 import org.example.entidades.Loja;
 import org.example.produto.Estoque;
 
@@ -65,7 +63,7 @@ public class RepositorioLoja {
                 throw new Exception("CPF ja cadastrado no sistema");
             }
         }
-        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque));
+        listaLojas.add(new Loja(nome, email, senha, cpf, endereco, ID, estoque, null));
         ID++;
     }
     public static void inserir(Loja newLoja){
