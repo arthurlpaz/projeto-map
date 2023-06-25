@@ -64,5 +64,4 @@ public class Pedidos {
     public void setAvaliado(boolean avaliado) {
         this.avaliado = avaliado;
     }
-
 }

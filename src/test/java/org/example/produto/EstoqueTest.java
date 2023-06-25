@@ -20,31 +20,23 @@ public class EstoqueTest extends TestCase {
 
     @Test
     public void testarListarProdutos() {
-        // Cria uma instância do Estoque
         Estoque estoque = new Estoque();
 
-        // Adiciona produtos à lista estoque
         estoque.inserir("Produto 1", 10, "Tipo 1", "Marca 1", "Descrição 1", 10);
         estoque.inserir("Produto 2", 20, "Tipo 2", "Marca 2", "Descrição 2", 20);
-        // Adicione mais produtos, se necessário
 
-        // Redireciona a saída padrão para um objeto ByteArrayOutputStream
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(outputStream);
         PrintStream originalPrintStream = System.out;
         System.setOut(printStream);
 
-        // Chama o método listarProdutos()
         estoque.listarProdutos();
 
-        // Restaura a saída padrão do console
         System.out.flush();
         System.setOut(originalPrintStream);
 
-        // Obtém a saída do console como uma String
         String consoleOutput = outputStream.toString();
 
-        // Verifica a saída do console com o resultado esperado
         String expectedOutput = "nome do produto -> Produto 1 | ID -> 1 | valor -> 10.0 | quantidade -> 10\r\n" +
                                 "nome do produto -> Produto 2 | ID -> 2 | valor -> 20.0 | quantidade -> 20\r\n";
         System.out.println(expectedOutput);

@@ -1,8 +1,13 @@
 package org.example.entidades;
 
 import junit.framework.TestCase;
+import org.example.utils.Avaliacao;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -113,5 +118,51 @@ public class EntidadesTest extends TestCase {
         assertEquals("987654321", entidade.getCpf());
         assertEquals("Rua D", entidade.getEndereco());
         assertEquals(5, entidade.getID());
+    }
+
+    @Test
+    public void testImprimeComentarios_SemAvaliacoes() {
+
+        Entidades entidade = new Entidades("Pedro", "pedro@example.com", "senha789", "555555555", "Rua C", 3);
+
+        // Espera-se que uma exceção seja lançada quando não houver avaliações
+        try {
+            entidade.imprimeComentarios();
+            fail("Deveria lançar uma exceção quando não houver avaliações");
+        } catch (Exception e) {
+            assertEquals("Nenhuma avaliacao foi feita sobre este usuario", e.getMessage());
+        }
+    }
+
+
+    @Test
+    public void testAdicionarAvaliacao() {
+        Entidades entidade = new Entidades("Pedro", "pedro@example.com", "senha789", "555555555", "Rua C", 3);
+        Avaliacao avaliacao = new Avaliacao("Pedro", 5, "Atendeu minhas expectativas");
+
+        // Add the rating to the Entidades object
+        entidade.adicionarAvaliacao(avaliacao);
+
+        // Get the list of ratings from the Entidades object
+        ArrayList<Avaliacao> avaliacoes = entidade.getAvaliacoes();
+
+        // Assert that the rating has been added to the list
+        assertEquals(1, avaliacoes.size());
+        assertEquals(avaliacao, avaliacoes.get(0));
+    }
+
+    @Test
+    public void testSetAvaliacoes() {
+        ArrayList<Avaliacao> avaliacoes = new ArrayList<>();
+        avaliacoes.add(new Avaliacao("Pedro", 4,"Ótimo serviço!"));
+        avaliacoes.add(new Avaliacao("Pedro", 5,"Muito profissional."));
+
+        Entidades entidade = new Entidades("Pedro", "pedro@example.com", "senha789", "555555555", "Rua C", 3);
+
+        entidade.setAvaliacoes(avaliacoes);
+
+        ArrayList<Avaliacao> avaliacoesObtidas = entidade.getAvaliacoes();
+
+        assertEquals(avaliacoes, avaliacoesObtidas);
     }
 }

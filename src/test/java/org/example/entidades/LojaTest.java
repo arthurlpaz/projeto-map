@@ -3,9 +3,11 @@ package org.example.entidades;
 import junit.framework.TestCase;
 import org.example.produto.Estoque;
 import org.example.produto.Pedidos;
+import org.example.utils.Avaliacao;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class LojaTest extends TestCase {
@@ -140,6 +142,12 @@ public class LojaTest extends TestCase {
     }
 
     @Test
+    public void testSetConceito() {
+        loja.setConceito("bom");
+        assertEquals("bom", loja.getConceito());
+    }
+
+    @Test
     public void testGetHistoricoDeVendas_QuandoNaoForNull() {
         ArrayList<Pedidos> historicoExistente = new ArrayList<>();
         historicoExistente.add(new Pedidos());
@@ -161,5 +169,35 @@ public class LojaTest extends TestCase {
         ArrayList<Pedidos> historicoRetornado = loja.getHistoricoDeVendas();
         assertEquals(historico, historicoRetornado);
     }
+
+    @Test
+    public void testAdicionarAvaliacao() {
+        Avaliacao avaliacao1 = new Avaliacao("Loja 1", 4, "Bom atendimento");
+        Avaliacao avaliacao2 = new Avaliacao("Loja 1", 5, "Excelente produto");
+
+        loja.adicionarAvaliacao(avaliacao1);
+        loja.adicionarAvaliacao(avaliacao2);
+
+        assertEquals(2, loja.getAvaliacoes().size());
+        assertEquals("bom", loja.getConceito());
+    }
+
+    @Test
+    public void testCalculaConceito() {
+        assertEquals(null, loja.getConceito());
+
+        Avaliacao avaliacao1 = new Avaliacao("Loja 1", 2, "Mau atendimento");
+        Avaliacao avaliacao2 = new Avaliacao("Loja 1", 4, "Bom atendimento");
+        Avaliacao avaliacao3 = new Avaliacao("Loja 1", 5, "Excelente produto");
+
+        loja.adicionarAvaliacao(avaliacao1);
+        loja.adicionarAvaliacao(avaliacao2);
+        loja.adicionarAvaliacao(avaliacao3);
+
+        assertEquals("medio", loja.getConceito());
+    }
+
+
+
 
 }

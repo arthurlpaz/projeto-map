@@ -9,6 +9,8 @@ import org.example.utils.Avaliacao;
 import java.io.*;
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 public class CompradorTest {
 
     private Comprador comprador;
@@ -33,55 +35,51 @@ public class CompradorTest {
 
     @Test
     public void testGetHistoricoDeCompras() {
-        // Verifica se o histórico de compras inicial está vazio
-        Assert.assertTrue(comprador.getHistoricoDeCompras().isEmpty());
+        assertTrue(comprador.getHistoricoDeCompras().isEmpty());
 
-        // Adiciona um pedido ao histórico de compras
         ArrayList<MapProduto> produtos = new ArrayList<>();
         produtos.add(new MapProduto(new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1), 2));
         Pedidos pedido = new Pedidos(produtos, comprador.getNome(), "Loja A", false);
         comprador.getHistoricoDeCompras().add(pedido);
 
-        // Verifica se o histórico de compras contém o pedido adicionado
-        Assert.assertEquals(1, comprador.getHistoricoDeCompras().size());
-        Assert.assertEquals(pedido, comprador.getHistoricoDeCompras().get(0));
+        assertEquals(1, comprador.getHistoricoDeCompras().size());
+        assertEquals(pedido, comprador.getHistoricoDeCompras().get(0));
     }
 
     @Test
     public void testSetHistoricoDeCompras() {
-        // Verifica se o histórico de compras inicial está vazio
-        Assert.assertTrue(comprador.getHistoricoDeCompras().isEmpty());
+        assertTrue(comprador.getHistoricoDeCompras().isEmpty());
 
-        // Cria um novo histórico de compras
         ArrayList<Pedidos> novoHistorico = new ArrayList<>();
         ArrayList<MapProduto> produtos = new ArrayList<>();
         produtos.add(new MapProduto(new Produto("Produto 1", 10.0, "Tipo 1", "Marca 1", "Descrição 1", 1), 2));
         Pedidos pedido = new Pedidos(produtos, comprador.getNome(), "Loja A", false);
         novoHistorico.add(pedido);
 
-        // Define o novo histórico de compras
         comprador.setHistoricoDeCompras(novoHistorico);
 
-        // Verifica se o histórico de compras foi atualizado corretamente
-        Assert.assertEquals(1, comprador.getHistoricoDeCompras().size());
-        Assert.assertEquals(pedido, comprador.getHistoricoDeCompras().get(0));
+        assertEquals(1, comprador.getHistoricoDeCompras().size());
+        assertEquals(pedido, comprador.getHistoricoDeCompras().get(0));
     }
 
     @Test
     public void testGetCarrinho() {
-        // Obtém o carrinho pela primeira vez
         Carrinho carrinho1 = comprador.getCarrinho();
 
-        // Verifica se o carrinho obtido não é nulo
         Assert.assertNotNull(carrinho1);
 
-        // Obtém o carrinho novamente
         Carrinho carrinho2 = comprador.getCarrinho();
 
-        // Verifica se o carrinho obtido é o mesmo objeto retornado anteriormente
         Assert.assertSame(carrinho1, carrinho2);
     }
 
+    @Test
+    public void testSetCarrinho() {
+        Carrinho carrinho = new Carrinho();
+        comprador.setCarrinho(carrinho);
+
+        assertSame(carrinho, comprador.getCarrinho());
+    }
     @Test
     public void testImprimirCompras() {
         // Criação de um histórico de compras fictício
@@ -120,7 +118,6 @@ public class CompradorTest {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
 
-        // Redireciona a saída do método imprimirCompras() para o StringWriter
         System.setOut(new PrintStream(new OutputStream() {
             @Override
             public void write(int b) {
@@ -128,24 +125,20 @@ public class CompradorTest {
             }
         }));
 
-        // Chama o método imprimirCompras()
         comprador.imprimirCompras();
 
-        // Restaura a saída padrão
         System.setOut(System.out);
 
-        // Obtém a saída do método imprimirCompras()
         String output = stringWriter.toString();
 
-        // Verifica se a saída contém as informações esperadas do histórico de compras
-        Assert.assertTrue(output.contains("HISTORICO DE COMPRAS:"));
-        Assert.assertTrue(output.contains("Loja: " + nomeLojaPedido1));
-        Assert.assertTrue(output.contains("Usuario: " + nomeUsuarioPedido1));
-        Assert.assertTrue(output.contains("Loja: " + nomeLojaPedido2));
-        Assert.assertTrue(output.contains("Usuario: " + nomeUsuarioPedido2));
-        Assert.assertTrue(output.contains("Loja: " + nomeLojaPedido3));
-        Assert.assertTrue(output.contains("Usuario: " + nomeUsuarioPedido3));
-        Assert.assertTrue(output.contains("--------------------------------------------------------------"));
+        assertTrue(output.contains("HISTORICO DE COMPRAS:"));
+        assertTrue(output.contains("Loja: " + nomeLojaPedido1));
+        assertTrue(output.contains("Usuario: " + nomeUsuarioPedido1));
+        assertTrue(output.contains("Loja: " + nomeLojaPedido2));
+        assertTrue(output.contains("Usuario: " + nomeUsuarioPedido2));
+        assertTrue(output.contains("Loja: " + nomeLojaPedido3));
+        assertTrue(output.contains("Usuario: " + nomeUsuarioPedido3));
+        assertTrue(output.contains("--------------------------------------------------------------"));
     }
 
     @Test
@@ -161,18 +154,33 @@ public class CompradorTest {
         ArrayList<Pedidos> historicoDeCompras = new ArrayList<>();        
         ArrayList<Avaliacao> avaliacoes = new ArrayList<>();
 
-
-        // Criação do objeto Comprador
         Comprador comprador = new Comprador(nome, email, senha, cpf, endereco, ID, avaliacoes, carrinho, historicoDeCompras);
 
-        // Verificação dos atributos
-        Assert.assertEquals(nome, comprador.getNome());
-        Assert.assertEquals(email, comprador.getEmail());
-        Assert.assertEquals(senha, comprador.getSenha());
-        Assert.assertEquals(cpf, comprador.getCpf());
-        Assert.assertEquals(endereco, comprador.getEndereco());
-        Assert.assertEquals(ID, comprador.getID());
-        Assert.assertEquals(carrinho, comprador.getCarrinho());
-        Assert.assertEquals(historicoDeCompras, comprador.getHistoricoDeCompras());
+        assertEquals(nome, comprador.getNome());
+        assertEquals(email, comprador.getEmail());
+        assertEquals(senha, comprador.getSenha());
+        assertEquals(cpf, comprador.getCpf());
+        assertEquals(endereco, comprador.getEndereco());
+        assertEquals(ID, comprador.getID());
+        assertEquals(carrinho, comprador.getCarrinho());
+        assertEquals(historicoDeCompras, comprador.getHistoricoDeCompras());
     }
+
+    @Test
+    public void testAvaliarPedidosTodosPedidosAvaliados() {
+        // Teste: Avaliar pedidos quando todos os pedidos já foram avaliados deve lançar uma exceção
+        ArrayList<Pedidos> historico = new ArrayList<>();
+        historico.add(new Pedidos(new ArrayList<>(), "João", "Loja A", true));
+        comprador.setHistoricoDeCompras(historico);
+
+        try {
+            comprador.avaliarPedidos();
+            fail("Deveria ter lançado uma exceção");
+        } catch (Exception e) {
+            assertEquals("todos os pedidos ja foram avaliados", e.getMessage());
+        }
+    }
+
+
+
 }

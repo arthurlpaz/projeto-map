@@ -83,5 +83,13 @@ public class PedidosTest {
         assertEquals("Arthur", pedidos.getNomeUsuario());
         assertEquals("Loja Arthur", pedidos.getNomeLoja());
     }
+
+    @Test
+    public void testGetSetAvaliado() {
+        boolean avaliado = true;
+
+        pedidos.setAvaliado(avaliado);
+        assertEquals(avaliado, pedidos.getAvaliado());
+    }
 }
 

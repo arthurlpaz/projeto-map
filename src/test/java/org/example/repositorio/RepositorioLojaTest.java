@@ -15,13 +15,17 @@ public class RepositorioLojaTest extends TestCase {
     private Loja loja1;
     private Loja loja2;
 
+    private Loja loja3;
     @Before
     public void setUp(){
         repositorio = RepositorioLoja.getInstancia();
         loja1 = new Loja("Loja 1", "loja1@example.com", "senha123", "12345678900", "Rua 1", 1, new Estoque());
         loja2 = new Loja("Loja 2", "loja2@example.com", "senha456", "98765432100", "Rua 2", 2, new Estoque());
+        loja3 = new Loja("Loja 3", "loja3@example.com", "senha3", "555555555", "Endereço 3", 3, new Estoque(), null);
+
         repositorio.inserir(loja1);
         repositorio.inserir(loja2);
+        repositorio.inserir(loja3);
     }
 
     @Test
@@ -153,5 +157,11 @@ public class RepositorioLojaTest extends TestCase {
         repositorioLoja.listarTodosOsProdutos();
     }
 
+    @Test
+    public void testRemoverPorNome() throws Exception {
+        repositorio.removerPorNome("Loja 2");
+
+        assertEquals(5, repositorio.getListaLojas().size());
+    }
 }
 
