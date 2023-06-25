@@ -93,10 +93,8 @@ public class Loja  extends  Entidades {
 
                 pedidoAtual.setAvaliado(true);
                 
-                sc.close();
             }
             else{
-                sc.close();
                 throw new Exception("Valor digitado não está entre 0 e 5");
             }
         }
