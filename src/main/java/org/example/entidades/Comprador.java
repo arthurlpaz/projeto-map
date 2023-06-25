@@ -86,18 +86,15 @@ public class Comprador extends Entidades{
             int nota = sc.nextInt();
             sc.nextLine();
 
-            if(nota >= 1 && nota <= 5){
+            if(nota >= 0 && nota <= 5){
                 System.out.println("Faça um comentario sobre o pedido");
                 String comentario = sc.nextLine();
 
                 Avaliacao avaliacao = new Avaliacao(this.getNome(), nota, comentario);
                 lojaAtual.adicionarAvaliacao(avaliacao);
                 pedidoAtual.setAvaliado(true);
-
-                sc.close();
             }
             else{
-                sc.close();
                 throw new Exception("Valor digitado não está entre 0 e 5");
             }
         }

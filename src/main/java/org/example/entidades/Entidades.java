@@ -36,13 +36,29 @@ public class Entidades {
 
     public double getMediaAvaliacoes(){
         int totalNotas = 0;
-        for (int i = 0; i < avaliacoes.size(); i++) {
-            totalNotas+=avaliacoes.get(i).getNota();
+
+        if(avaliacoes == null || avaliacoes.size() == 0){
+            avaliacoes = new ArrayList<>();
+            return totalNotas;
         }
+        else{
+            for (int i = 0; i < avaliacoes.size(); i++) {
+                totalNotas+=avaliacoes.get(i).getNota();
+            }
+        }
+        
         return totalNotas / avaliacoes.size();
     }
 
-    public void imprimeComentarios(){
+    public void imprimeComentarios() throws Exception{
+        if(avaliacoes == null){
+            avaliacoes = new ArrayList<>();
+        }
+
+        if(avaliacoes.size() == 0){
+            throw new Exception("Nenhuma avaliacao foi feita sobre este usuario");
+        }
+        
         for (int i = 0; i < avaliacoes.size(); i++) {
             System.out.println(avaliacoes.get(i));  
         }

@@ -228,10 +228,14 @@ public class Fachada {
                 }
             }
 
-/*
-        System.out.println("9 - visualizar comentarios");        
-        System.out.println("10 - avaliar pedidos");
-*/
+            //visualizar comentarios
+            case 9 -> {
+                try {
+                    RepositorioComprador.getCompradorPorNome(AuthService.getInstancia().getNome()).imprimeComentarios();
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+            }
             //avaliar pedidos
             case 10 -> {
                 try {
@@ -302,7 +306,11 @@ public class Fachada {
 
             //visualizar comentarios feitos sobre a loja
             case 6 -> {
-                lojaLogada.imprimeComentarios();
+                try {
+                    lojaLogada.imprimeComentarios();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
 
             //avaliar pedidos
