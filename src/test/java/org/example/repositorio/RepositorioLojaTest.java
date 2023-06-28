@@ -163,5 +163,19 @@ public class RepositorioLojaTest extends TestCase {
 
         assertEquals(5, repositorio.getListaLojas().size());
     }
+
+    @Test
+    public void testGetLojaPorID() {
+        Loja resultado = RepositorioLoja.getLojaPorID(3);
+        assertEquals(loja3, resultado);
+    }
+
+    @Test
+    public void testGetLojaPorNome() throws Exception {
+        Loja resultado = RepositorioLoja.getLojaPorNome("Loja 3");
+        assertEquals(loja3, resultado);
+    }
+
+
 }
 

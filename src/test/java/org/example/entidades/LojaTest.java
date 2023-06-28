@@ -5,9 +5,13 @@ import org.example.produto.Estoque;
 import org.example.produto.Pedidos;
 import org.example.utils.Avaliacao;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class LojaTest extends TestCase {
@@ -196,8 +200,4 @@ public class LojaTest extends TestCase {
 
         assertEquals("medio", loja.getConceito());
     }
-
-
-
-
 }

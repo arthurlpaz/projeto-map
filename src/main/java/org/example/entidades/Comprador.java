@@ -30,7 +30,7 @@ public class Comprador extends Entidades{
         }
 
         while(carrinho.getProdutosPorLoja().size() != 0){
-            if (super.getMediaAvaliacoes() > 4){
+            if (super.getMediaAvaliacoes() >= 4){
                 System.out.println("Parabéns, você ganhou frete grátis");
             }
             
@@ -107,6 +107,7 @@ public class Comprador extends Entidades{
             this.historicoDeCompras.get(i).imprimirPedidos();
         }
         System.out.println("--------------------------------------------------------------");
+        System.out.println(super.getMediaAvaliacoes());
     }
 
     public Carrinho getCarrinho() {

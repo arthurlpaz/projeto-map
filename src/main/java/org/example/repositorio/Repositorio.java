@@ -11,7 +11,4 @@ public interface Repositorio {
     public static void removerPorID() {
 
     }
-    public static void getInstancia() {
-
-    }
 }

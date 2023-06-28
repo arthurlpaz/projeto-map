@@ -24,8 +24,4 @@ public class RepositorioTest extends TestCase {
         Repositorio.removerPorID();
     }
 
-    @Test
-    public void testGetInstancia() {
-
-    }
 }
